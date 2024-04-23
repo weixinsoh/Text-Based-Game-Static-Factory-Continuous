@@ -13,7 +13,7 @@ public class PotOfGold extends ConsumableItem {
     @Override
     public String consumedBy(Actor actor) {
         actor.addBalance(POT_OF_GOLD_BALANCE);
-        return "Pot of Gold is placed into wallet for 10 gold.";
+        return super.consumedBy(actor) + "\nPot of Gold is placed into wallet for 10 gold.";
     }
 }
 
