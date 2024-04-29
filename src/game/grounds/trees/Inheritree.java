@@ -3,6 +3,7 @@ package game.grounds.trees;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
+import game.Utility;
 import game.scraps.fruits.Fruit;
 
 import java.util.List;
@@ -13,11 +14,6 @@ import java.util.Random;
  *
  */
 public abstract class Inheritree extends Ground {
-    /**
-     * Random to generate random integer to get random Exit.
-     */
-    public final Random random = new Random();
-
     private int count = 0;
 
     private final int ticksBeforeGrow;
@@ -67,7 +63,7 @@ public abstract class Inheritree extends Ground {
         }
 
         List<Exit> exits = location.getExits();
-        Location destination = exits.get(random.nextInt(exits.size())).getDestination();
+        Location destination = exits.get(Utility.generateRandomInt(0, exits.size())).getDestination();
 
         Fruit fruit = growFruit();
         if (fruit.drop()) {

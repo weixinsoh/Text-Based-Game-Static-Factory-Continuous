@@ -6,8 +6,10 @@ import edu.monash.fit2099.engine.actors.Behaviour;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
+import game.Utility;
 import game.actions.AttackAction;
 import game.capabilities.Status;
+import jdk.jshell.execution.Util;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -17,7 +19,6 @@ import java.util.Random;
  *
  */
 public class AttackBehaviour implements Behaviour {
-    private final Random random = new Random();
 
     /**
      * Returns a AttackAction to attack other actor that is not hostile to intern, if there is an actor in the surroundings.
@@ -46,7 +47,7 @@ public class AttackBehaviour implements Behaviour {
         }
 
         if (!actions.isEmpty()) {
-            return actions.get(random.nextInt(actions.size()));
+            return actions.get(Utility.generateRandomInt(0, actions.size()));
         }
         else {
             return null;
