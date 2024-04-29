@@ -19,7 +19,7 @@ public class JarOfPickles extends ConsumableItem {
             return String.format("%s and %s heals %s by %d points.", super.consumedBy(actor), this, actor, JAR_OF_PICKLES_HEALTH_AFFECTED);
         } else {
             actor.hurt(JAR_OF_PICKLES_HEALTH_AFFECTED);
-            return String.format("%s and %s hurts %s by %d points.", super.consumedBy(actor), this, actor, JAR_OF_PICKLES_HEALTH_AFFECTED);
+            return String.format("%s and %s damages %s by %d points.", super.consumedBy(actor), this, actor, JAR_OF_PICKLES_HEALTH_AFFECTED);
         }
     }
 }
