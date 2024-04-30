@@ -3,6 +3,7 @@ package game.grounds;
 import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
+import game.Utility;
 import game.actors.creatures.Creature;
 
 import java.util.ArrayList;
@@ -14,11 +15,6 @@ import java.util.Random;
  *
  */
 public class Crater extends Ground {
-    /**
-     * Random used to generate random integer.
-     */
-    public final Random random = new Random();
-
     private Creature creature;
 
     /**
@@ -49,7 +45,7 @@ public class Crater extends Ground {
                 exits.add(exit);
             }
         }
-        Location destination = exits.get(random.nextInt(exits.size())).getDestination();
+        Location destination = exits.get(Utility.generateRandomInt(0, exits.size())).getDestination();
 
         Creature spawnedCreature = creature.spawn();
         if (spawnedCreature != null) {

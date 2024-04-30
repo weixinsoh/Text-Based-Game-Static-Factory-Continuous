@@ -9,6 +9,7 @@ import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.actors.Behaviour;
+import game.Utility;
 
 /**
  * Created by:
@@ -22,9 +23,6 @@ import edu.monash.fit2099.engine.actors.Behaviour;
  *
  */
 public class WanderBehaviour implements Behaviour {
-
-    private final Random random = new Random();
-
     /**
      * Returns a MoveAction to wander to a random location, if possible.
      * If no movement is possible, returns null.
@@ -48,7 +46,7 @@ public class WanderBehaviour implements Behaviour {
         }
 
         if (!actions.isEmpty()) {
-            return actions.get(random.nextInt(actions.size()));
+            return actions.get(Utility.generateRandomInt(0, actions.size()));
         }
         else {
             return null;
