@@ -183,7 +183,7 @@ public abstract class Actor extends GameEntity implements Printable {
      * @param newDamageMultiplier the new damage multiplier.
      */
     public void updateDamageMultiplier(float newDamageMultiplier) {
-        this.damageMultiplier = newDamageMultiplier;
+        this. damageMultiplier = newDamageMultiplier;
     }
 
     /**
