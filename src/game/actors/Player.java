@@ -44,7 +44,9 @@ public class Player extends Actor {
      */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-        display.println("Intern\nHP: " + this.getAttribute(BaseActorAttributes.HEALTH) + "/" + this.getAttributeMaximum(BaseActorAttributes.HEALTH));
+        display.println("Intern\nHP: " + this.getAttribute(BaseActorAttributes.HEALTH)
+                + "/" + this.getAttributeMaximum(BaseActorAttributes.HEALTH)
+                + "\nBalance: " + this.getBalance() );
         // Handle multi-turn Actions
         if (lastAction.getNextAction() != null)
             return lastAction.getNextAction();
