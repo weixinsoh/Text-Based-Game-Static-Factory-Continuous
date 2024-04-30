@@ -1,5 +1,7 @@
+package game.spawners;
+
 import edu.monash.fit2099.engine.positions.Location;
-import game.Spawner;
+import game.spawners.Spawner;
 import game.actors.creatures.HuntsmanSpider;
 
 public class HuntsmanSpiderSpawner implements Spawner {
