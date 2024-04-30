@@ -48,9 +48,11 @@ public class AlienBug extends Creature {
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
+        if (otherActor.hasCapability(Status.FOLLOWABLE)) {
+            this.addBehaviour(FOLLOW_BEHAVIOUR_PRIORITY, new FollowBehaviour(otherActor));
+        }
         if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
             actions.add(new AttackAction(this, direction));
-            this.addBehaviour(FOLLOW_BEHAVIOUR_PRIORITY, new FollowBehaviour(otherActor));
         }
         return actions;
     }

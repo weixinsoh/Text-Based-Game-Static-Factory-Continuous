@@ -9,4 +9,5 @@ package game.capabilities;
 public enum Status {
     HOSTILE_TO_ENEMY,
     HOSTILE_TO_INTERN,
+    FOLLOWABLE,
 }
