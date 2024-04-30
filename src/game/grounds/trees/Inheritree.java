@@ -4,7 +4,6 @@ import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.Utility;
-import game.scraps.fruits.Fruit;
 
 import java.util.List;
 import java.util.Random;
@@ -14,39 +13,29 @@ import java.util.Random;
  *
  */
 public abstract class Inheritree extends Ground {
-    private int count = 0;
 
-    private final int ticksBeforeGrow;
+    private final double droppingProbability;
 
     /**
      * Constructor of the Inheritree class.
      *
      * @param displayChar the character that will represent the Inheritree in the display
-     * @param ticksBeforeGrow an integer representing the number of ticks needed to grow to next stage.
+     * @param droppingProbability a double representing the probability of dropping a fruit.
      */
-    public Inheritree(char displayChar, int ticksBeforeGrow) {
+    public Inheritree(char displayChar, double droppingProbability) {
         super(displayChar);
-        this.ticksBeforeGrow = ticksBeforeGrow;
+        this.droppingProbability = droppingProbability;
     }
 
     /**
-     * Grow a fruit.
+     * Drop a fruit.
      *
-     * @return a new fruit.
+     * @param location the location to drop the fruit.
      */
-    public abstract Fruit growFruit();
+    public abstract void dropFruit(Location location);
 
     /**
-     * Return the next stage of the inheritree to grow into.
-     *
-     * @return the next stage of the inheritree.
-     */
-    public Inheritree getNextStage() {
-        return null;
-    }
-
-    /**
-     * Drop fruit with a probability and grow to next stage after several ticks.
+     * Drop fruit with a probability.
      *
      * Overrides Ground.tick(Location)
      *
@@ -55,19 +44,10 @@ public abstract class Inheritree extends Ground {
      */
     @Override
     public void tick(Location location) {
-        super.tick(location);
-        count++;
-
-        if (count == ticksBeforeGrow + 1 && getNextStage() != null) {
-            location.setGround(getNextStage());
-        }
-
         List<Exit> exits = location.getExits();
         Location destination = exits.get(Utility.generateRandomInt(0, exits.size())).getDestination();
-
-        Fruit fruit = growFruit();
-        if (fruit.drop()) {
-            destination.addItem(fruit);
+        if (Math.random() <= droppingProbability) {
+            dropFruit(destination);
         }
     }
 

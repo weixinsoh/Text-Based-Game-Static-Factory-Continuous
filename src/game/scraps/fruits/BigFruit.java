@@ -1,17 +1,14 @@
 package game.scraps.fruits;
 
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.items.Item;
+import game.consumable.Consumable;
 
 /**
  * Class representing big fruit that can be produced by the mature stage of the inheritree.
  *
  */
-public class BigFruit extends Fruit {
-    /**
-     * The probability to drop the fruit.
-     *
-     */
-    public static final double DROPPING_PROBABILITY = 0.3;
+public class BigFruit extends Item implements Consumable {
 
     /**
      * The amount of points it can heal after consuming by the actor.
@@ -24,20 +21,21 @@ public class BigFruit extends Fruit {
      *
      */
     public BigFruit() {
-        super("big fruit", 'O', DROPPING_PROBABILITY);
+        super("big fruit", 'O', true);
     }
 
     /**
      * Heal the actor after consuming.
      *
-     * Overrides Fruit.consumedBy(Actor)
+     * Overrides Consumable.consumedBy(Actor)
      *
-     * @see Fruit#consumedBy(Actor)
+     * @see Consumable#consumedBy(Actor)
      * @param actor the actor who consumed the healer.
-     * @return a string representing the actor consumed the small fruit and the small fruit heals him by point(s).
+     * @return a string representing the actor consumed the big fruit and the big fruit heals him by point(s).
      */
     public String consumedBy(Actor actor) {
+        actor.removeItemFromInventory(this);
         actor.heal(HEAL_POINTS);
-        return String.format("%s and %s heals %s by %d points. ", super.consumedBy(actor), this, actor, HEAL_POINTS);
+        return String.format("%s consumed %s and %s heals %s by %d points. ", actor, this, this, actor, HEAL_POINTS);
     }
 }
