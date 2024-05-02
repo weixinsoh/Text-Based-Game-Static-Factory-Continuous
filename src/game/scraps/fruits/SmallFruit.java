@@ -46,7 +46,7 @@ public class SmallFruit extends Item implements Consumable {
      * Overrides Item.allowableActions(Actor)
      *
      * @see Item#allowableActions(Actor)
-     * @return a list of actions that can be performed on the consumable item.
+     * @return a list of actions that can be performed on the Small Fruit.
      */
     @Override
     public ActionList allowableActions(Actor owner) {

@@ -46,7 +46,7 @@ public class BigFruit extends Item implements Consumable {
      * Overrides Item.allowableActions(Actor)
      *
      * @see Item#allowableActions(Actor)
-     * @return a list of actions that can be performed on the consumable item.
+     * @return a list of actions that can be performed on the Big Fruit.
      */
     @Override
     public ActionList allowableActions(Actor owner) {
