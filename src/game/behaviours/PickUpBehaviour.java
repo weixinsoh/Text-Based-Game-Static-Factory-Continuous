@@ -15,7 +15,10 @@ public class PickUpBehaviour implements Behaviour {
 
         ArrayList<Action> actions = new ArrayList<>();
         for (Item item: map.locationOf(actor).getItems()) {
-            actions.add(new PickUpAction(item));
+            Action action = item.getPickUpAction(actor);
+            if (action != null) {
+                actions.add(action);
+            }
         }
 
         if (!actions.isEmpty()) {
