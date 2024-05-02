@@ -1,7 +1,9 @@
 package game.scraps.fruits;
 
+import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
+import game.actions.ConsumeAction;
 import game.consumable.Consumable;
 
 /**
@@ -37,5 +39,12 @@ public class BigFruit extends Item implements Consumable {
         actor.removeItemFromInventory(this);
         actor.heal(HEAL_POINTS);
         return String.format("%s consumed %s and %s heals %s by %d points. ", actor, this, this, actor, HEAL_POINTS);
+    }
+
+    @Override
+    public ActionList allowableActions(Actor owner) {
+        ActionList actions = new ActionList();
+        actions.add(new ConsumeAction(this));
+        return actions;
     }
 }
