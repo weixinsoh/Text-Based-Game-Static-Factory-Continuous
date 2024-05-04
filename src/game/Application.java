@@ -63,6 +63,8 @@ public class Application {
         Crater hunstmanSpiderCrater = new Crater(new HuntsmanSpider());
         gameMap.at(9, 10).setGround(hunstmanSpiderCrater);
 
+        gameMap.at(15, 5).setGround(new ComputerTerminal());
+
         for (String line : FancyMessage.TITLE.split("\n")) {
             new Display().println(line);
             try {
