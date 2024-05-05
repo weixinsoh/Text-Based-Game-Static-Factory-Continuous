@@ -1,14 +1,14 @@
 package game.scraps.purchasedItems;
 
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.items.Item;
 import game.consumable.Consumable;
-import game.consumable.ConsumableItem;
 
 /**
  * Class representing energy drink that can be purchased by the computer terminal.
  *
  */
-public class EnergyDrink extends ConsumableItem implements TradeCapable {
+public class EnergyDrink extends Item implements Consumable, TradeCapable {
 
     /**
      * The amount of credits required for a standard purchase.
