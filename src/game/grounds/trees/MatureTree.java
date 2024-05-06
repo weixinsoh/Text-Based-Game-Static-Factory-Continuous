@@ -1,7 +1,7 @@
 package game.grounds.trees;
 
 import edu.monash.fit2099.engine.positions.Location;
-import game.scraps.fruits.BigFruit;
+import game.scraps.specialscraps.fruits.BigFruit;
 
 /**
  * Class representing the mature stage of the inheritree.

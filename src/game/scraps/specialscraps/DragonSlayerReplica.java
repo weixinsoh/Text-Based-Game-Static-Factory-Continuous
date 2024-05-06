@@ -1,4 +1,4 @@
-package game.scraps.purchasedItems;
+package game.scraps.specialscraps;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;

@@ -5,10 +5,10 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actions.TradeAction;
-import game.scraps.purchasedItems.DragonSlayerReplica;
-import game.scraps.purchasedItems.EnergyDrink;
-import game.scraps.purchasedItems.ToiletPaperRoll;
-import game.scraps.purchasedItems.TradeCapable;
+import game.scraps.specialscraps.DragonSlayerReplica;
+import game.scraps.specialscraps.EnergyDrink;
+import game.scraps.specialscraps.ToiletPaperRoll;
+import game.scraps.specialscraps.TradeCapable;
 
 import java.util.ArrayList;
 import java.util.List;

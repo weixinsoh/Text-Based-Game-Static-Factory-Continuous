@@ -1,8 +1,7 @@
-package game.scraps.purchasedItems;
+package game.scraps.specialscraps;
 
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
-import game.consumable.Consumable;
 
 /**
  * Class representing toilet paper roll that can be purchased by the computer terminal.

@@ -1,10 +1,8 @@
 package game.grounds.trees;
 
-import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
-import game.Utility;
-import game.scraps.fruits.SmallFruit;
+import game.scraps.specialscraps.fruits.SmallFruit;
 
 import java.util.List;
 

@@ -1,10 +1,10 @@
-package game.scraps.fruits;
+package game.scraps.specialscraps.fruits;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import game.actions.ConsumeAction;
-import game.consumable.Consumable;
+import game.scraps.specialscraps.Consumable;
 
 /**
  * Class representing small fruit that can be produced by the sapling of the inheritree.

@@ -9,7 +9,7 @@ import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actions.ConsumeAction;
-import game.consumable.Consumable;
+import game.scraps.specialscraps.Consumable;
 
 import java.util.Objects;
 

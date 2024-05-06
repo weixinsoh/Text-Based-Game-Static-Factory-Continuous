@@ -1,11 +1,10 @@
-package game.scraps;
+package game.scraps.specialscraps;
 
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import game.actions.ConsumeAction;
-import game.consumable.Consumable;
 
 /**
  * Class that represents a Jar Of Pickles that can be consumed to randomly hurt or heal the player

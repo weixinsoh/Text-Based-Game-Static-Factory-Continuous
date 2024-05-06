@@ -3,7 +3,7 @@ package game.actions;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.scraps.purchasedItems.TradeCapable;
+import game.scraps.specialscraps.TradeCapable;
 
 /**
  * Class representing an action to trade.

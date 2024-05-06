@@ -1,10 +1,9 @@
-package game.scraps;
+package game.scraps.specialscraps;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import game.actions.ConsumeAction;
-import game.consumable.Consumable;
 
 /**
  * Class that represents a Pot of Gold that can be used by the intern to add 10 gold to the Intern's balance

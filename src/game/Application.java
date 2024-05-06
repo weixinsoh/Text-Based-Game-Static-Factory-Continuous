@@ -12,7 +12,7 @@ import game.actors.creatures.HuntsmanSpider;
 import game.grounds.*;
 import game.grounds.trees.Sapling;
 import game.scraps.LargeBolt;
-import game.scraps.MetalPipe;
+import game.scraps.specialscraps.MetalPipe;
 import game.scraps.MetalSheet;
 
 /**

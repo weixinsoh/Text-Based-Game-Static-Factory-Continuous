@@ -1,4 +1,4 @@
-package game.consumable;
+package game.scraps.specialscraps;
 
 import edu.monash.fit2099.engine.actors.Actor;
 
