@@ -2,7 +2,6 @@ package game.actors.creatures;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.items.DropAction;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.Utility;
@@ -13,6 +12,10 @@ import game.behaviours.WanderBehaviour;
 import game.capabilities.Ability;
 import game.capabilities.Status;
 
+/**
+ * Class representing Alien Bug that can be spawned from the crater by its spawner.
+ *
+ */
 public class AlienBug extends Creature {
 
     private static final int PICKUP_BEHAVIOUR_PRIORITY = 997;
@@ -55,8 +58,18 @@ public class AlienBug extends Creature {
         return actions;
     }
 
+    /**
+     * Method that can be executed when the actor is unconscious due to the action of another actor
+     *
+     * Overrides Actor.unconscious(GameMap)
+     *
+     * @see Actor#unconscious(GameMap)
+     * @param actor the perpetrator
+     * @param map where the actor fell unconscious
+     * @return an empty string
+     */
     @Override
-    public String unconscious(GameMap map) {
+    public String unconscious(Actor actor, GameMap map) {
         for (Item item: this.getItemInventory()){
             item.getDropAction(this).execute(this, map);
         }

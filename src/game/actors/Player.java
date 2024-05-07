@@ -80,7 +80,7 @@ public class Player extends Actor {
      * @return a string describing what happened when the actor is unconscious
      */
     @Override
-    public String unconscious(GameMap map) {
+    public String unconscious(Actor actor, GameMap map) {
         map.removeActor(this);
         return FancyMessage.YOU_ARE_FIRED;
     }
