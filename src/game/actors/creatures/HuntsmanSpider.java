@@ -8,6 +8,7 @@ import game.actions.AttackAction;
 import game.behaviours.AttackBehaviour;
 import game.capabilities.Status;
 import game.behaviours.WanderBehaviour;
+import game.spawners.HuntsmanSpiderSpawner;
 
 /**
  * Class representing huntsman spider that can be spawned by the crater.
@@ -70,12 +71,16 @@ public class HuntsmanSpider extends Creature {
      *
      * @return a huntsman spider to be added to map if probability is met, otherwise null.
      */
-    @Override
-    public Creature spawn() {
-        if (Math.random() <= SPAWN_PROBABILITY) {
-            return new HuntsmanSpider();
-        }
-        return null;
-    }
+//    @Override
+//    public Creature spawn(){
+//        return null;
+//    }
+//    @Override
+//    public Creature spawn() {
+//        if (Math.random() <= SPAWN_PROBABILITY) {
+//            return new HuntsmanSpider();
+//        }
+//        return null;
+//    }
 
 }
