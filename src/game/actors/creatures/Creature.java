@@ -14,7 +14,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * Abstract base class representing creature that can be spawned by the crater.
+ * Abstract base class representing creature that can be spawned from the crater by its spawner.
  *
  */
 public abstract class Creature extends Actor {

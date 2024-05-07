@@ -9,7 +9,23 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import game.Utility;
 import java.util.ArrayList;
 
+/**
+ * Class representing the behaviour to pick up portable items.
+ *
+ */
 public class PickUpBehaviour implements Behaviour {
+
+    /**
+     * Returns a PickUpAction to pick up the portable items at the location the actor standing at.
+     * If no item can be picked up, it returns null.
+     *
+     * Overrides Behaviour.getAction(Actor, GameMap)
+     *
+     * @see Behaviour#getAction(Actor, GameMap)
+     * @param actor the Actor enacting the behaviour
+     * @param map the map that actor is currently on
+     * @return an Action, or null if the following actor or it dies.
+     */
     @Override
     public Action getAction(Actor actor, GameMap map) {
 

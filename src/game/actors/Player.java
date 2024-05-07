@@ -76,6 +76,7 @@ public class Player extends Actor {
      * Overrides Actor.unconscious(GameMap)
      *
      * @see Actor#unconscious(GameMap)
+     * @param actor the perpetrator
      * @param map where the actor fell unconscious
      * @return a string describing what happened when the actor is unconscious
      */

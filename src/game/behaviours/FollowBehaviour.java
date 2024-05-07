@@ -8,6 +8,10 @@ import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 
+/**
+ * Class representing the behaviour to follow other actors.
+ *
+ */
 public class FollowBehaviour implements Behaviour {
     private final Actor target;
 
@@ -19,6 +23,18 @@ public class FollowBehaviour implements Behaviour {
     public FollowBehaviour(Actor subject) {
         this.target = subject;
     }
+
+    /**
+     * Returns a MoveActorAction to keep following other followable actor until the following actor or it dies or game end.
+     * If the following target or it dies, it returns null.
+     *
+     * Overrides Behaviour.getAction(Actor, GameMap)
+     *
+     * @see Behaviour#getAction(Actor, GameMap)
+     * @param actor the Actor enacting the behaviour
+     * @param map the map that actor is currently on
+     * @return an Action, or null if the following actor or it dies.
+     */
     @Override
     public Action getAction(Actor actor, GameMap map) {
         if(!map.contains(target) || !map.contains(actor))

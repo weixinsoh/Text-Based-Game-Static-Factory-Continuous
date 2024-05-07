@@ -64,23 +64,4 @@ public class HuntsmanSpider extends Creature {
         return new IntrinsicWeapon(1, "long legs", 25);
     }
 
-    /**
-     * Allow a huntsman spider to be spawned by the Crater.
-     *
-     * Overrides Creature.spawn()
-     *
-     * @return a huntsman spider to be added to map if probability is met, otherwise null.
-     */
-//    @Override
-//    public Creature spawn(){
-//        return null;
-//    }
-//    @Override
-//    public Creature spawn() {
-//        if (Math.random() <= SPAWN_PROBABILITY) {
-//            return new HuntsmanSpider();
-//        }
-//        return null;
-//    }
-
 }
