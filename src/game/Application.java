@@ -8,12 +8,14 @@ import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
 import game.actors.Player;
+import game.actors.creatures.AlienBug;
 import game.actors.creatures.HuntsmanSpider;
 import game.grounds.*;
 import game.grounds.trees.Sapling;
 import game.scraps.LargeBolt;
 import game.scraps.MetalPipe;
 import game.scraps.MetalSheet;
+import game.spawners.*;
 
 /**
  * The main class to start the game.
@@ -60,8 +62,14 @@ public class Application {
         MetalPipe metalPipe = new MetalPipe();
         gameMap.at(10, 10).addItem(metalPipe);
 
-        Crater hunstmanSpiderCrater = new Crater(new HuntsmanSpider());
+        Crater hunstmanSpiderCrater = new Crater(new HuntsmanSpiderSpawner());
         gameMap.at(9, 10).setGround(hunstmanSpiderCrater);
+
+        Crater alienBugCrater = new Crater(new AlienBugSpawner());
+        gameMap.at(12, 12).setGround(alienBugCrater);
+
+        Crater suspiciousAstronautCrater = new Crater(new SuspiciousAstronautSpawner());
+        gameMap.at(16, 12).setGround(suspiciousAstronautCrater);
 
         for (String line : FancyMessage.TITLE.split("\n")) {
             new Display().println(line);
