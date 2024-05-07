@@ -5,6 +5,9 @@ import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.Utility;
 import game.actors.creatures.Creature;
+import game.actors.creatures.HuntsmanSpider;
+import game.spawners.HuntsmanSpiderSpawner;
+import game.spawners.Spawner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,16 +18,16 @@ import java.util.Random;
  *
  */
 public class Crater extends Ground {
-    private Creature creature;
+    private Spawner spawner;
 
     /**
      * Constructor of the Crater class.
      *
      * @param creature the type of creature to spawn.
      */
-    public Crater(Creature creature) {
+    public Crater(Spawner spawner) {
         super('u');
-        this.creature = creature;
+        this.spawner = spawner;
     }
 
     /**
@@ -38,18 +41,17 @@ public class Crater extends Ground {
     @Override
     public void tick(Location location) {
         super.tick(location);
-
         List<Exit> exits = new ArrayList<>();
         for (Exit exit: location.getExits()) {
-            if (exit.getDestination().canActorEnter(creature)) {
+            if (!exit.getDestination().containsAnActor()) {
                 exits.add(exit);
             }
         }
         Location destination = exits.get(Utility.generateRandomInt(0, exits.size())).getDestination();
 
-        Creature spawnedCreature = creature.spawn();
-        if (spawnedCreature != null) {
-            destination.addActor(spawnedCreature);
+        if(!location.containsAnActor()){
+            spawner.spawn(destination);
+
         }
     }
 }
