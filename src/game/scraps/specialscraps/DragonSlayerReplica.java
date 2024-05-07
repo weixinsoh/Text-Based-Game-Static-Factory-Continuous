@@ -33,12 +33,21 @@ public class DragonSlayerReplica extends WeaponItem implements TradeCapable {
     }
 
     /**
+     * Retrieve the actual credits needed when purchasing the item.
+     *
+     * @return the amount of actual credits
+     */
+    public int getActualCredit(){
+        return CREDIT;
+    }
+
+    /**
      * Allow the actor to perform an attack using dragon slayer replica.
      *
      * Overrides WeaponItem.allowableActions(Actor, Location)
      *
      * @see WeaponItem#allowableActions(Actor, Location)
-     * @return a list of actions that can be performed by the actor.
+     * @return a list of actions that can be performed on the dragon slayer replica.
      */
     @Override
     public ActionList allowableActions(Actor otherActor, Location location){
@@ -59,19 +68,12 @@ public class DragonSlayerReplica extends WeaponItem implements TradeCapable {
      */
     @Override
     public String trade(Actor actor) {
-        String ret = "";
-
-        if (Payment.makePayment(actor, CREDIT)) {
-            if (Math.random() <= SPECIAL_CASE_CHANCE){
-                actor.addItemToInventory(this);
-                ret += String.format("%s successfully purchased %s for %d credits.", actor, this, CREDIT);
-            } else {
-                ret += String.format("%d credits are taken from %s, but %s doesn't receive anything in the return!", CREDIT, actor, actor);
-            }
+        if (Math.random() <= SPECIAL_CASE_CHANCE) {
+            actor.addItemToInventory(this);
+            return String.format("%s successfully purchased %s for %d credits.", actor, this, CREDIT);
         } else {
-            ret += String.format("Balance is not sufficient to make the payment (%d < %d). Purchase failed!", actor.getBalance(), CREDIT);
+            return String.format("%d credits are taken from %s, but %s doesn't receive anything in the return!", CREDIT, actor, actor);
         }
-        return ret;
     }
 }
 

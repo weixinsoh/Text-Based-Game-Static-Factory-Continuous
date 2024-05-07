@@ -26,7 +26,7 @@ public class TradeAction extends Action {
     }
 
     /**
-     * Allow the Actor to trade something.
+     * Allow the Actor to trade something if player has sufficient balance.
      *
      * Overrides Action.execute(Actor, GameMap)
      *
@@ -37,7 +37,13 @@ public class TradeAction extends Action {
      */
     @Override
     public String execute(Actor actor, GameMap map) {
-        return tradeCapable.trade(actor);
+        int credit = this.tradeCapable.getActualCredit();
+        if (actor.getBalance() >= credit){
+            actor.addBalance(credit * -1);
+            return tradeCapable.trade(actor);
+        } else
+            return String.format("Balance is not sufficient to make the payment (%d < %d). Purchase failed!", actor.getBalance(), credit);
+
     }
 
     /**

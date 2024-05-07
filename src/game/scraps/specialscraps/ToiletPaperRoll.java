@@ -34,6 +34,18 @@ public class ToiletPaperRoll extends Item implements TradeCapable{
     }
 
     /**
+     * Retrieve the actual credits needed when purchasing the item.
+     *
+     * @return the amount of actual credits
+     */
+    public int getActualCredit(){
+        if (Math.random() <= SPECIAL_CASE_CHANCE)
+            return SPECIAL_CASE_CREDIT;
+        else
+            return CREDIT;
+    }
+
+    /**
      * Purchase a toilet paper roll with a certain credit and add it to actor's item inventory
      *
      * Overrides TradeCapable.trade(Actor)
@@ -44,18 +56,7 @@ public class ToiletPaperRoll extends Item implements TradeCapable{
      */
     @Override
     public String trade(Actor actor) {
-        String ret = "";
-        int newCredit = CREDIT;
-
-        if (Math.random() <= SPECIAL_CASE_CHANCE)
-            newCredit = SPECIAL_CASE_CREDIT;
-
-        if (Payment.makePayment(actor,newCredit)){
-            actor.addItemToInventory(this);
-            ret += String.format("%s successfully purchased %s for %d credits.", actor, this, newCredit);
-        } else {
-            ret += String.format("Balance is not sufficient to make the payment (%d < %d). Purchase failed!", actor.getBalance(), CREDIT);
-        }
-        return ret;
+        actor.addItemToInventory(this);
+        return String.format("%s successfully purchased %s for %d credits.", actor, this, getActualCredit());
     }
 }

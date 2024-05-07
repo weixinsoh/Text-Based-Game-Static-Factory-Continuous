@@ -1,7 +1,11 @@
 package game.scraps.specialscraps;
 
+import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
+import edu.monash.fit2099.engine.positions.Location;
+import edu.monash.fit2099.engine.weapons.WeaponItem;
+import game.actions.ConsumeAction;
 
 /**
  * Class representing energy drink that can be purchased by the computer terminal.
@@ -35,6 +39,33 @@ public class EnergyDrink extends Item implements Consumable, TradeCapable {
     }
 
     /**
+     * Retrieve the actual credits needed when purchasing the item.
+     *
+     * @return the amount of actual credits
+     */
+    public int getActualCredit(){
+        if (Math.random() <= SPECIAL_CASE_CHANCE)
+            return CREDIT * 2;
+        else
+            return CREDIT;
+    }
+
+    /**
+     * Allow the actor to consume the energy drink.
+     *
+     * Overrides Item.allowableActions(Actor)
+     *
+     * @see Item#allowableActions(Actor)
+     * @return a list of actions that can be performed on the energy drink.
+     */
+    @Override
+    public ActionList allowableActions(Actor owner) {
+        ActionList actions = new ActionList();
+        actions.add(new ConsumeAction(this));
+        return actions;
+    }
+
+    /**
      * Heal the actor after consuming.
      *
      * Overrides Consumable.consumedBy(Actor)
@@ -60,20 +91,8 @@ public class EnergyDrink extends Item implements Consumable, TradeCapable {
      */
     @Override
     public String trade(Actor actor){
-        String ret = "";
-
-        int newCredit = CREDIT;
-
-        if (Math.random() <= SPECIAL_CASE_CHANCE)
-            newCredit = CREDIT * 2;
-
-        if (Payment.makePayment(actor,newCredit)){
-            actor.addItemToInventory(this);
-            ret += String.format("%s successfully purchased %s for %d credits.", actor, this, newCredit);
-        } else {
-            ret += String.format("Balance is not sufficient to make the payment (%d < %d). Purchase failed!", actor.getBalance(), CREDIT);
-        }
-        return ret;
+        actor.addItemToInventory(this);
+        return String.format("%s successfully purchased %s for %d credits.", actor, this, getActualCredit());
     }
 
 

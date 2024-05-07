@@ -16,4 +16,11 @@ public interface TradeCapable {
      */
     String trade(Actor actor);
 
+    /**
+     * Retrieve the actual credits needed when purchasing the tradable item.
+     *
+     * @return the amount of actual credits
+     */
+    int getActualCredit();
+
 }
