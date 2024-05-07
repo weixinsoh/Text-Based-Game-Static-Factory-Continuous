@@ -1,5 +1,6 @@
 package game.actors.creatures;
 
+import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
@@ -11,6 +12,8 @@ import game.behaviours.PickUpBehaviour;
 import game.behaviours.WanderBehaviour;
 import game.capabilities.Ability;
 import game.capabilities.Status;
+
+import java.util.List;
 
 /**
  * Class representing Alien Bug that can be spawned from the crater by its spawner.
@@ -70,9 +73,13 @@ public class AlienBug extends Creature {
      */
     @Override
     public String unconscious(Actor actor, GameMap map) {
+        ActionList actions = new ActionList();
         for (Item item: this.getItemInventory()){
-            item.getDropAction(this).execute(this, map);
+            actions.add(item.getDropAction(this));
         }
-        return "";
+        for (Action action: actions){
+            action.execute(this, map);
+        }
+        return super.unconscious(actor, map);
     }
 }
