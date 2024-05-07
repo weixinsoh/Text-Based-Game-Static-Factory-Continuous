@@ -14,6 +14,9 @@ import java.util.Random;
  */
 public abstract class Inheritree extends Ground {
 
+    /**
+     * The probability of the fruit dropping
+     */
     private final double droppingProbability;
 
     /**

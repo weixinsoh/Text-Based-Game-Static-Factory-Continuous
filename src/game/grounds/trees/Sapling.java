@@ -11,10 +11,21 @@ import java.util.List;
  *
  */
 public class Sapling extends Inheritree {
+    /**
+     * Count that keeps track of the Sapling Inheritree age
+     */
     private int count = 0;
+
+    /**
+     * Integer that keeps tracks of the amount of ticks still required before the tree matures
+     */
     private static final int TICKS_BEFORE_GROW = 5;
 
+    /**
+     * The probability of the tree dropping a fruit
+     */
     private static final double DROPPING_PROBABILITY = 0.2;
+
     /**
      * Constructor of the Sapling class.
      *
