@@ -55,11 +55,6 @@ public class AlienBug extends Creature {
         return actions;
     }
 
-//    @Override
-//    public Creature spawn() {
-//        return null;
-//    }
-
     @Override
     public String unconscious(GameMap map) {
         for (Item item: this.getItemInventory()){
