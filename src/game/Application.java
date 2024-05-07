@@ -14,6 +14,9 @@ import game.grounds.trees.Sapling;
 import game.scraps.LargeBolt;
 import game.scraps.specialscraps.MetalPipe;
 import game.scraps.MetalSheet;
+import game.spawners.AlienBugSpawner;
+import game.spawners.HuntsmanSpiderSpawner;
+import game.spawners.SuspiciousAstronautSpawner;
 
 /**
  * The main class to start the game.
@@ -60,8 +63,14 @@ public class Application {
         MetalPipe metalPipe = new MetalPipe();
         gameMap.at(10, 10).addItem(metalPipe);
 
-        Crater hunstmanSpiderCrater = new Crater(new HuntsmanSpider());
+        Crater hunstmanSpiderCrater = new Crater(new HuntsmanSpiderSpawner());
         gameMap.at(9, 10).setGround(hunstmanSpiderCrater);
+
+        Crater alienBugCrater = new Crater(new AlienBugSpawner());
+        gameMap.at(12, 12).setGround(alienBugCrater);
+
+        Crater suspiciousAstronautCrater = new Crater(new SuspiciousAstronautSpawner());
+        gameMap.at(16, 12).setGround(suspiciousAstronautCrater);
 
         gameMap.at(15, 5).setGround(new ComputerTerminal());
 
