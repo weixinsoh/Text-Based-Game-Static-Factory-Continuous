@@ -64,11 +64,4 @@ public abstract class Creature extends Actor {
         }
         return new DoNothingAction();
     }
-
-    /**
-     * Allow a new creature to be spawned by the Crater.
-     *
-     * @return a Creature to be added to map.
-     */
-    public abstract Creature spawn();
 }
