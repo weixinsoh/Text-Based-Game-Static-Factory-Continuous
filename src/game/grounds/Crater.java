@@ -23,7 +23,7 @@ public class Crater extends Ground {
     /**
      * Constructor of the Crater class.
      *
-     * @param creature the type of creature to spawn.
+     * @param spawner the spawner associated with the Creature to be created.
      */
     public Crater(Spawner spawner) {
         super('u');
