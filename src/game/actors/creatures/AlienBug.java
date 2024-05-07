@@ -2,7 +2,6 @@ package game.actors.creatures;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.actors.Behaviour;
 import edu.monash.fit2099.engine.items.DropAction;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
@@ -19,7 +18,6 @@ public class AlienBug extends Creature {
     private static final int PICKUP_BEHAVIOUR_PRIORITY = 997;
     private static final int FOLLOW_BEHAVIOUR_PRIORITY = 998;
     private static final int WANDER_BEHAVIOUR_PRIORITY = 999;
-    private Behaviour followBehaviour;
 
 
     /**
@@ -43,14 +41,16 @@ public class AlienBug extends Creature {
      * @param otherActor the Actor that might be performing attack
      * @param direction  String representing the direction of the other Actor
      * @param map        current GameMap
-     * @return
+     * @return an ActionList of actions that can be performed on it
      */
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
         ActionList actions = new ActionList();
+        if (otherActor.hasCapability(Status.FOLLOWABLE)) {
+            this.addBehaviour(FOLLOW_BEHAVIOUR_PRIORITY, new FollowBehaviour(otherActor));
+        }
         if(otherActor.hasCapability(Status.HOSTILE_TO_ENEMY)){
             actions.add(new AttackAction(this, direction));
-            this.addBehaviour(FOLLOW_BEHAVIOUR_PRIORITY, new FollowBehaviour(otherActor));
         }
         return actions;
     }
@@ -58,7 +58,7 @@ public class AlienBug extends Creature {
     @Override
     public String unconscious(GameMap map) {
         for (Item item: this.getItemInventory()){
-            new DropAction(item).execute(this, map);
+            item.getDropAction(this).execute(this, map);
         }
         return "";
     }

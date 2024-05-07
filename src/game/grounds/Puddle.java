@@ -3,25 +3,24 @@ package game.grounds;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.attributes.ActorAttributeOperations;
 import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
+import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.Ground;
-
 
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actions.ConsumeAction;
-import game.consumable.Consumable;
+import game.scraps.specialscraps.Consumable;
 
 import java.util.Objects;
-
-import static edu.monash.fit2099.engine.actors.attributes.ActorAttributeOperations.INCREASE;
-import static edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes.HEALTH;
 
 /**
  * Class representing puddle.
  */
 public class Puddle extends Ground implements Consumable {
 
+    /**
+     * The amount of maximum health increased by the puddle
+     */
     private static final int PUDDLE_HEALTH = 1;
 
     /**
@@ -31,11 +30,26 @@ public class Puddle extends Ground implements Consumable {
         super('~');
     }
 
+    /**
+     * Increases the Actor's maximum health by 1
+     * Overrides Consumable.consumedBy(Actor)
+     *
+     * @see Consumable#consumedBy(Actor)
+     * @param actor the actor who consumes the Puddle
+     * @return a string representing the actor has consumed the Puddle and the amount of health the puddle increases the actor's maximum health
+     */
     public String consumedBy(Actor actor){
         actor.modifyAttributeMaximum(BaseActorAttributes.HEALTH, ActorAttributeOperations.INCREASE, PUDDLE_HEALTH);
-        return "Intern slurps from puddle and increase health by 1.";
+        return String.format("%s consumes %s and maximum health increase by %d points. ", actor, this, PUDDLE_HEALTH);
     }
 
+    /**
+     * Allow the actor to consume the Puddle
+     * Overrides Item.allowableActions(Actor)
+     *
+     * @see Item#allowableActions(Actor)
+     * @return a list of actions that can be performed on the Puddle
+     */
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         ActionList actions = new ActionList();
@@ -45,6 +59,10 @@ public class Puddle extends Ground implements Consumable {
         return actions;
     }
 
+    /**
+     * The Puddle as a string
+     * @return the Puddle represented as a string
+     */
     @Override
     public String toString(){
         return "Puddle";

@@ -1,46 +1,56 @@
 package game.grounds.trees;
 
-import game.scraps.fruits.Fruit;
-import game.scraps.fruits.SmallFruit;
+import edu.monash.fit2099.engine.positions.Ground;
+import edu.monash.fit2099.engine.positions.Location;
+import game.scraps.specialscraps.fruits.SmallFruit;
+
+import java.util.List;
 
 /**
  * Class representing the sapling of the inheritree.
  *
  */
 public class Sapling extends Inheritree {
+    private int count = 0;
     private static final int TICKS_BEFORE_GROW = 5;
 
+    private static final double DROPPING_PROBABILITY = 0.2;
     /**
      * Constructor of the Sapling class.
      *
      */
     public Sapling() {
-        super('t', TICKS_BEFORE_GROW);
+        super('t', DROPPING_PROBABILITY);
     }
 
     /**
-     * Grow a small fruit.
+     * Drop fruit with a probability and grow to next stage after several ticks.
      *
-     * Overrides Inheritree.growFruit()
+     * Overrides Ground.tick(Location)
      *
-     * @see Inheritree#growFruit()
-     * @return a new small fruit.
+     * @see Ground#tick(Location)
+     * @param location The location of the Ground.
      */
     @Override
-    public Fruit growFruit() {
-        return new SmallFruit();
+    public void tick(Location location) {
+        super.tick(location);
+        count++;
+
+        if (count == TICKS_BEFORE_GROW + 1) {
+            location.setGround(new MatureTree());
+        }
     }
 
     /**
-     * Return the MatureTree stage to grow into.
+     * Drop a small fruit.
      *
-     * Overrides Inheritree.getNextStage()
+     * Overrides Inheritree.dropFruit()
      *
-     * @see Inheritree#getNextStage()
-     * @return the MatureTree.
+     * @see Inheritree#dropFruit(Location)
+     * @param location the location to drop the fruit.
      */
     @Override
-    public Inheritree getNextStage() {
-        return new MatureTree();
+    public void dropFruit(Location location) {
+        location.addItem(new SmallFruit());
     }
 }

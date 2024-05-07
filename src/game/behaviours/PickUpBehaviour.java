@@ -5,13 +5,8 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.actors.Behaviour;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.items.PickUpAction;
-import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
-import edu.monash.fit2099.engine.positions.Location;
 import game.Utility;
-import game.actions.AttackAction;
-import game.capabilities.Status;
-
 import java.util.ArrayList;
 
 public class PickUpBehaviour implements Behaviour {
@@ -20,7 +15,10 @@ public class PickUpBehaviour implements Behaviour {
 
         ArrayList<Action> actions = new ArrayList<>();
         for (Item item: map.locationOf(actor).getItems()) {
-            actions.add(new PickUpAction(item));
+            Action action = item.getPickUpAction(actor);
+            if (action != null) {
+                actions.add(action);
+            }
         }
 
         if (!actions.isEmpty()) {
