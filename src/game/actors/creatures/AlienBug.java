@@ -55,10 +55,10 @@ public class AlienBug extends Creature {
         return actions;
     }
 
-    @Override
-    public Creature spawn() {
-        return null;
-    }
+//    @Override
+//    public Creature spawn() {
+//        return null;
+//    }
 
     @Override
     public String unconscious(GameMap map) {
