@@ -38,10 +38,10 @@ public class SuspiciousAstronaut extends Creature {
         return actions;
     }
 
-    @Override
-    public Creature spawn() {
-        return null;
-    }
+//    @Override
+//    public Creature spawn() {
+//        return null;
+//    }
 
     @Override
     public IntrinsicWeapon getIntrinsicWeapon() {
