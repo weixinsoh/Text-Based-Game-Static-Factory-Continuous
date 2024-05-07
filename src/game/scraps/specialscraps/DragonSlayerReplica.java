@@ -11,7 +11,7 @@ import game.capabilities.Status;
  * Class representing dragon slayer replica that can be purchased by the computer terminal.
  *
  */
-public class DragonSlayerReplica extends WeaponItem implements TradeCapable {
+public class DragonSlayerReplica extends WeaponItem implements PurchaseCapable {
 
     /**
      * The amount of credits required for a purchase.
@@ -60,14 +60,14 @@ public class DragonSlayerReplica extends WeaponItem implements TradeCapable {
     /**
      * Purchase a dragon slayer replica with a certain credit and add it to actor's item inventory with a certain probability.
      *
-     * Overrides TradeCapable.trade(Actor)
+     * Overrides PurchaseCapable.purchase(Actor)
      *
-     * @see TradeCapable#trade(Actor)
+     * @see PurchaseCapable#purchase(Actor)
      * @param actor The actor who purchases dragon slayer replica.
-     * @return a string representing the actor trades the dragon slayer replica with a certain credit.
+     * @return a string representing the actor purchases the dragon slayer replica with a certain credit.
      */
     @Override
-    public String trade(Actor actor) {
+    public String purchase(Actor actor) {
         if (Math.random() <= SPECIAL_CASE_CHANCE) {
             actor.addItemToInventory(this);
             return String.format("%s successfully purchased %s for %d credits.", actor, this, CREDIT);

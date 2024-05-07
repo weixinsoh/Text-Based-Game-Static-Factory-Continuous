@@ -3,15 +3,13 @@ package game.scraps.specialscraps;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
-import edu.monash.fit2099.engine.positions.Location;
-import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actions.ConsumeAction;
 
 /**
  * Class representing energy drink that can be purchased by the computer terminal.
  *
  */
-public class EnergyDrink extends Item implements Consumable, TradeCapable {
+public class EnergyDrink extends Item implements Consumable, PurchaseCapable {
 
     /**
      * The amount of credits required for a standard purchase.
@@ -66,31 +64,32 @@ public class EnergyDrink extends Item implements Consumable, TradeCapable {
     }
 
     /**
-     * Heal the actor after consuming.
+     * Heal the actor after consuming and removes the energy drink from the actor's inventory
      *
      * Overrides Consumable.consumedBy(Actor)
      *
      * @see Consumable#consumedBy(Actor)
      * @param actor the actor who consumed the healer.
-     * @return a string representing the actor consumed the energy drink and the energy drink heals him by point(s).
+     * @return a string representing the actor consumed the energy drink and effect of the energy drink heals.
      */
     @Override
     public String consumedBy(Actor actor){
         actor.heal(HIT_POINTS);
+        actor.removeItemFromInventory(this);
         return String.format("%s drinks Energy Drink. %s feels energised.", actor, actor);
     }
 
     /**
      * Purchase an energy drink with a certain credit and add it to actor's item inventory
      *
-     * Overrides TradeCapable.trade(Actor)
+     * Overrides PurchaseCapable.purchase(Actor)
      *
-     * @see TradeCapable#trade(Actor)
+     * @see PurchaseCapable#purchase(Actor)
      * @param actor The actor who purchases energy drink.
-     * @return a string representing the actor trades the energy drink with a certain credit.
+     * @return a string representing the actor purchases the energy drink with a certain credit.
      */
     @Override
-    public String trade(Actor actor){
+    public String purchase(Actor actor){
         actor.addItemToInventory(this);
         return String.format("%s successfully purchased %s for %d credits.", actor, this, getActualCredit());
     }
