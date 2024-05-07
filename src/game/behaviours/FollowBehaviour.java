@@ -32,7 +32,7 @@ public class FollowBehaviour implements Behaviour {
             Location destination = exit.getDestination();
             if (destination.canActorEnter(actor)) {
                 int newDistance = distance(destination, there);
-                if (newDistance < currentDistance) {
+                if (newDistance <= currentDistance) {
                     return new MoveActorAction(destination, exit.getName());
                 }
             }
