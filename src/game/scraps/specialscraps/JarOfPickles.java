@@ -30,7 +30,7 @@ public class JarOfPickles extends Item implements Consumable {
     }
 
     /**
-     * Heals or hurts the actor after consuming and
+     * Heals or hurts the actor after consuming randomly depending on the probability of expiry and
      * Removes the Jar Of Pickles from the actor's inventory
      * Overrides Consumable.consumedBy(Actor)
      *
@@ -51,7 +51,7 @@ public class JarOfPickles extends Item implements Consumable {
     }
 
     /**
-     * Allow the actor to consume the Jar Of Pickles
+     * Allow the actor to consume the Jar Of Pickles by returning an ActionList that consists of ConsumeAction
      * Overrides Item.allowableActions(Actor)
      *
      * @see Item#allowableActions(Actor)

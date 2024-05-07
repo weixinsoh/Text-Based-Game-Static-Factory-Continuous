@@ -14,7 +14,9 @@ import game.scraps.specialscraps.Consumable;
 import java.util.Objects;
 
 /**
- * Class representing puddle.
+ * Class representing a puddle that extends from Ground and implements Consumable
+ * It can be consumed by an Intern standing on the puddle
+ * It increases the Intern's maximum health by one.
  */
 public class Puddle extends Ground implements Consumable {
 
@@ -61,6 +63,7 @@ public class Puddle extends Ground implements Consumable {
 
     /**
      * The Puddle as a string
+     *
      * @return the Puddle represented as a string
      */
     @Override
