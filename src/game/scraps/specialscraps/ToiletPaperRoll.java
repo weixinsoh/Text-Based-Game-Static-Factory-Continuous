@@ -7,7 +7,7 @@ import edu.monash.fit2099.engine.items.Item;
  * Class representing toilet paper roll that can be purchased by the computer terminal.
  *
  */
-public class ToiletPaperRoll extends Item implements TradeCapable{
+public class ToiletPaperRoll extends Item implements PurchaseCapable {
 
     /**
      * The amount of credits required for a standard purchase.
@@ -48,14 +48,14 @@ public class ToiletPaperRoll extends Item implements TradeCapable{
     /**
      * Purchase a toilet paper roll with a certain credit and add it to actor's item inventory
      *
-     * Overrides TradeCapable.trade(Actor)
+     * Overrides PurchaseCapable.purchase(Actor)
      *
-     * @see TradeCapable#trade(Actor)
+     * @see PurchaseCapable#purchase(Actor)
      * @param actor The actor who purchases toilet paper roll.
-     * @return a string representing the actor trades the toilet paper roll with a certain credit.
+     * @return a string representing the actor purchases the toilet paper roll with a certain credit.
      */
     @Override
-    public String trade(Actor actor) {
+    public String purchase(Actor actor) {
         actor.addItemToInventory(this);
         return String.format("%s successfully purchased %s for %d credits.", actor, this, getActualCredit());
     }

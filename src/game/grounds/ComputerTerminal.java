@@ -4,11 +4,11 @@ import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
-import game.actions.TradeAction;
+import game.actions.PurchaseAction;
 import game.scraps.specialscraps.DragonSlayerReplica;
 import game.scraps.specialscraps.EnergyDrink;
 import game.scraps.specialscraps.ToiletPaperRoll;
-import game.scraps.specialscraps.TradeCapable;
+import game.scraps.specialscraps.PurchaseCapable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,19 +28,19 @@ public class ComputerTerminal extends Ground {
     }
 
     /**
-     * Add all trade-capable items available in the computer terminal into a list
-     * @return a list containing all trade-capable items found in the computer terminal
+     * Add all purchasable items available in the computer terminal into a list
+     * @return a list containing all purchasable items found in the computer terminal
      */
-    public List<TradeCapable> allowableTradeCapables(){
-        List<TradeCapable> tradeCapables = new ArrayList<>();
-        tradeCapables.add(new EnergyDrink());
-        tradeCapables.add(new DragonSlayerReplica());
-        tradeCapables.add(new ToiletPaperRoll());
-        return tradeCapables;
+    public List<PurchaseCapable> allowablePurchasedItems(){
+        List<PurchaseCapable> purchasedItems = new ArrayList<>();
+        purchasedItems.add(new EnergyDrink());
+        purchasedItems.add(new DragonSlayerReplica());
+        purchasedItems.add(new ToiletPaperRoll());
+        return purchasedItems;
     }
 
     /**
-     * Allow actor to perform a trade action.
+     * Allow actor to perform a purchase action.
      *
      * @param actor the actor who going to purchase item in the computer terminal
      * @param location the current Location
@@ -50,8 +50,8 @@ public class ComputerTerminal extends Ground {
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         ActionList actions = new ActionList();
-        for (TradeCapable tradeCapable: this.allowableTradeCapables()){
-            actions.add(new TradeAction(tradeCapable));
+        for (PurchaseCapable purchasedItem: this.allowablePurchasedItems()){
+            actions.add(new PurchaseAction(purchasedItem));
         }
         return actions;
     }
