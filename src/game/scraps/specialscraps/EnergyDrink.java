@@ -9,7 +9,7 @@ import game.actions.ConsumeAction;
  * Class representing energy drink that can be purchased by the computer terminal.
  *
  */
-public class EnergyDrink extends Item implements Consumable, PurchaseCapable {
+public class EnergyDrink extends Item implements Consumable, Purchasable {
 
     /**
      * The amount of credits required for a standard purchase.
@@ -84,7 +84,7 @@ public class EnergyDrink extends Item implements Consumable, PurchaseCapable {
      *
      * Overrides PurchaseCapable.purchase(Actor)
      *
-     * @see PurchaseCapable#purchase(Actor)
+     * @see Purchasable#purchase(Actor)
      * @param actor The actor who purchases energy drink.
      * @return a string representing the actor purchases the energy drink with a certain credit.
      */
