@@ -13,8 +13,6 @@ import game.behaviours.WanderBehaviour;
 import game.capabilities.Ability;
 import game.capabilities.Status;
 
-import java.util.List;
-
 /**
  * Class representing Alien Bug that can be spawned from the crater by its spawner.
  *
@@ -25,13 +23,17 @@ public class AlienBug extends Creature {
     private static final int FOLLOW_BEHAVIOUR_PRIORITY = 998;
     private static final int WANDER_BEHAVIOUR_PRIORITY = 999;
 
+    private static final int LOWERBOUND_ID = 100;
+
+    private static final int UPPERBOUND_ID = 999;
+
 
     /**
      * Constructor of the Creature class.
      *
      */
     public AlienBug() {
-        super(String.format("Feature-%d", Utility.generateRandomInt(100, 999)), 'a', 2);
+        super(String.format("Feature-%d", Utility.generateRandomInt(LOWERBOUND_ID, UPPERBOUND_ID)), 'a', 2);
         this.addBehaviour(PICKUP_BEHAVIOUR_PRIORITY, new PickUpBehaviour());
         this.addBehaviour(WANDER_BEHAVIOUR_PRIORITY, new WanderBehaviour());
         this.addCapability(Ability.ENTER_SPACESHIP);

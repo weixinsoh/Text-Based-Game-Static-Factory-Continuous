@@ -2,13 +2,10 @@ package game.actors.creatures;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.actors.attributes.BaseActorAttribute;
 import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
-import game.actions.AttackAction;
 import game.behaviours.AttackBehaviour;
-import game.behaviours.FollowBehaviour;
 import game.behaviours.WanderBehaviour;
 import game.capabilities.Status;
 
@@ -27,7 +24,7 @@ public class SuspiciousAstronaut extends Creature {
      *
      */
     public SuspiciousAstronaut() {
-        super("SuspiciousAstronaut", 'ඞ', 99);
+        super("Suspicious Astronaut", 'ඞ', 99);
         this.addCapability(Status.HOSTILE_TO_INTERN);
         this.addBehaviour(ATTACK_BEHAVIOUR_PRIORITY, new AttackBehaviour());
         this.addBehaviour(WANDER_BEHAVIOUR_PRIORITY, new WanderBehaviour());
