@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Class representing the computer terminal.
+ * Class representing the computer terminal that sells items.
  *
  */
 public class ComputerTerminal extends Ground {
@@ -29,6 +29,7 @@ public class ComputerTerminal extends Ground {
 
     /**
      * Add all purchasable items available in the computer terminal into a list
+     *
      * @return a list containing all purchasable items found in the computer terminal
      */
     public List<Purchasable> allowablePurchasedItems(){

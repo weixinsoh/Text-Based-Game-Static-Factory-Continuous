@@ -9,10 +9,9 @@ import edu.monash.fit2099.engine.positions.Location;
 import game.Utility;
 import game.actions.AttackAction;
 import game.capabilities.Status;
-import jdk.jshell.execution.Util;
 
 import java.util.ArrayList;
-import java.util.Random;
+
 
 /**
  * Class representing the behaviour to attack other actors.

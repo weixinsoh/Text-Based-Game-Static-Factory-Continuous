@@ -27,7 +27,6 @@ public class FollowBehaviour implements Behaviour {
     /**
      * Returns a MoveActorAction to keep following other followable actor until the following actor or it dies or game end.
      * If the following target or it dies, it returns null.
-     *
      * Overrides Behaviour.getAction(Actor, GameMap)
      *
      * @see Behaviour#getAction(Actor, GameMap)

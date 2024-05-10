@@ -13,15 +13,8 @@ import game.capabilities.Status;
  */
 public class DragonSlayerReplica extends WeaponItem implements Purchasable {
 
-    /**
-     * The amount of credits required for a purchase.
-     */
     private static final int CREDIT = 100;
 
-    /**
-     * The probability of taking credits without printing out from computer terminal.
-     *
-     */
     private static final double SPECIAL_CASE_CHANCE = 0.5;
 
     /**
@@ -43,7 +36,6 @@ public class DragonSlayerReplica extends WeaponItem implements Purchasable {
 
     /**
      * Allow the actor to perform an attack using dragon slayer replica.
-     *
      * Overrides WeaponItem.allowableActions(Actor, Location)
      *
      * @see WeaponItem#allowableActions(Actor, Location)
@@ -59,7 +51,6 @@ public class DragonSlayerReplica extends WeaponItem implements Purchasable {
 
     /**
      * Purchase a dragon slayer replica with a certain credit and add it to actor's item inventory with a certain probability.
-     *
      * Overrides PurchaseCapable.purchase(Actor)
      *
      * @see Purchasable#purchase(Actor)

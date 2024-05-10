@@ -42,8 +42,6 @@ public abstract class Creature extends Actor {
 
     /**
      * At each turn, select a valid action to perform.
-     *
-     *
      * Overrides Actor.playTurn(ActionList, Action, GameMap, Display)
      *
      * @see Actor#playTurn(ActionList, Action, GameMap, Display)

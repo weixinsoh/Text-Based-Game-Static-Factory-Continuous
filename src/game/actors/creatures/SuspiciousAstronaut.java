@@ -32,14 +32,13 @@ public class SuspiciousAstronaut extends Creature {
 
     /**
      * The Suspicious Astronaut can be attacked by any actor that has the HOSTILE_TO_ENEMY capability
-     *
      * Overrides Actor.allowableActions(Actor, String, GameMap)
      *
      * @see Actor#allowableActions(Actor, String, GameMap)
      * @param otherActor the Actor that might be performing attack
      * @param direction  String representing the direction of the other Actor
      * @param map        current GameMap
-     * @return
+     * @return the valid action that can be performed
      */
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
@@ -52,7 +51,6 @@ public class SuspiciousAstronaut extends Creature {
 
     /**
      * Return the intrinsic weapon of the Suspicious Astronaut.
-     *
      * Overrides Actor.getIntrinsicWeapon()
      *
      * @see Actor#getIntrinsicWeapon()

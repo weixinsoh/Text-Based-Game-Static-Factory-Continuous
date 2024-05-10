@@ -9,20 +9,10 @@ import edu.monash.fit2099.engine.items.Item;
  */
 public class ToiletPaperRoll extends Item implements Purchasable {
 
-    /**
-     * The amount of credits required for a standard purchase.
-     */
     private static final int CREDIT = 5;
 
-    /**
-     * The amount of credits required for a special case purchase.
-     */
     private static final int SPECIAL_CASE_CREDIT = 1;
 
-    /**
-     * The probability of encountering a special case purchase scenario.
-     *
-     */
     private static final double SPECIAL_CASE_CHANCE = 0.75;
 
     /**
@@ -47,7 +37,6 @@ public class ToiletPaperRoll extends Item implements Purchasable {
 
     /**
      * Purchase a toilet paper roll with a certain credit and add it to actor's item inventory
-     *
      * Overrides PurchaseCapable.purchase(Actor)
      *
      * @see Purchasable#purchase(Actor)

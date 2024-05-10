@@ -8,7 +8,6 @@ import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
 import game.actors.Player;
-import game.actors.creatures.HuntsmanSpider;
 import game.grounds.*;
 import game.grounds.trees.Sapling;
 import game.scraps.LargeBolt;
@@ -80,7 +79,8 @@ public class Application {
         Crater suspiciousAstronautCrater = new Crater(new SuspiciousAstronautSpawner());
         gameMap.at(16, 12).setGround(suspiciousAstronautCrater);
 
-        gameMap.at(15, 5).setGround(new ComputerTerminal());
+        ComputerTerminal computerTerminal = new ComputerTerminal();
+        gameMap.at(15, 5).setGround(computerTerminal);
 
         for (String line : FancyMessage.TITLE.split("\n")) {
             new Display().println(line);
@@ -91,7 +91,6 @@ public class Application {
             }
         }
 
-//        gameMap.at(7, 9).addActor(new HuntsmanSpider());
 
         Player player = new Player("Intern", '@', 4);
         world.addPlayer(player, gameMap.at(15, 6));

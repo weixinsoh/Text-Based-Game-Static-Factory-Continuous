@@ -21,7 +21,6 @@ public class Wall extends Ground {
 
     /**
      * Return false indicating the actor are not allowed to enter it.
-     *
      * Overrides Ground.canActorEnter(Actor)
      *
      * @see Ground#canActorEnter(Actor)

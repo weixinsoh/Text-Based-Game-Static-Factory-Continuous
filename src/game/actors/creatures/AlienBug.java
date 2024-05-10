@@ -29,7 +29,7 @@ public class AlienBug extends Creature {
 
 
     /**
-     * Constructor of the Creature class.
+     * Constructor of the AlienBug class.
      *
      */
     public AlienBug() {
@@ -42,7 +42,6 @@ public class AlienBug extends Creature {
 
     /**
      * The Alien Bug can be attacked by any actor that has the HOSTILE_TO_ENEMY capability
-     *
      * Overrides Actor.allowableActions(Actor, String, GameMap)
      *
      * @see Actor#allowableActions(Actor, String, GameMap)
@@ -65,7 +64,6 @@ public class AlienBug extends Creature {
 
     /**
      * Method that can be executed when the actor is unconscious due to the action of another actor
-     *
      * Overrides Actor.unconscious(GameMap)
      *
      * @see Actor#unconscious(GameMap)

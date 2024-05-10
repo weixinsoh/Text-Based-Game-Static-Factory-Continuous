@@ -8,10 +8,7 @@ import game.scraps.specialscraps.fruits.BigFruit;
  *
  */
 public class MatureTree extends Inheritree {
-    /**
-     * The probability to drop the fruit.
-     *
-     */
+
     private static final double DROPPING_PROBABILITY = 0.3;
 
     /**

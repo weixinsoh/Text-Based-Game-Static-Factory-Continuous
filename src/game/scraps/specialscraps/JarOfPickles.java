@@ -11,14 +11,9 @@ import game.actions.ConsumeAction;
  *
  */
 public class JarOfPickles extends Item implements Consumable {
-    /**
-     * Amount of health that can be affected by the Jar Of Pickles
-     */
+
     private static final int JAR_OF_PICKLES_HEALTH_AFFECTED = 1;
 
-    /**
-     * Probability that the Jar Of Pickles has expired and hence hurts instead of heals
-     */
     private static final double EXPIRED_PROBABILITY = 0.5;
 
     /**

@@ -4,8 +4,6 @@ import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.scraps.specialscraps.fruits.SmallFruit;
 
-import java.util.List;
-
 /**
  * Class representing the sapling of the inheritree.
  *

@@ -6,7 +6,6 @@ import edu.monash.fit2099.engine.positions.Location;
 import game.Utility;
 
 import java.util.List;
-import java.util.Random;
 
 /**
  * Abstract base class representing inheritree.
@@ -14,9 +13,6 @@ import java.util.Random;
  */
 public abstract class Inheritree extends Ground {
 
-    /**
-     * The probability of the fruit dropping
-     */
     private final double droppingProbability;
 
     /**
@@ -39,7 +35,6 @@ public abstract class Inheritree extends Ground {
 
     /**
      * Drop fruit with a probability.
-     *
      * Overrides Ground.tick(Location)
      *
      * @see Ground#tick(Location)
@@ -56,7 +51,6 @@ public abstract class Inheritree extends Ground {
 
     /**
      * Set inheritree to block thrown objects.
-     *
      * Overrides Ground.blocksThrownObjects()
      *
      * @see Ground#blocksThrownObjects()

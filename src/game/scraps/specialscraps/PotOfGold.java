@@ -11,11 +11,7 @@ import game.actions.ConsumeAction;
  */
 public class PotOfGold extends Item implements Consumable {
 
-    /**
-     * The amount of gold in the Pot
-     */
     private static final int POT_OF_GOLD_BALANCE = 10;
-
 
     /**
      * Constructor of the PotOfGold class.

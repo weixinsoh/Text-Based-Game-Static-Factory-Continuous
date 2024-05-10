@@ -11,21 +11,10 @@ import game.actions.ConsumeAction;
  */
 public class EnergyDrink extends Item implements Consumable, Purchasable {
 
-    /**
-     * The amount of credits required for a standard purchase.
-     */
     private static final int CREDIT = 10;
 
-    /**
-     * The amount of points it can heal after consuming by the actor.
-     *
-     */
     private static final int HIT_POINTS = 1;
 
-    /**
-     * The probability of encountering a special case purchase scenario.
-     *
-     */
     private static final double SPECIAL_CASE_CHANCE = 0.2;
 
     /**
@@ -50,7 +39,6 @@ public class EnergyDrink extends Item implements Consumable, Purchasable {
 
     /**
      * Allow the actor to consume the energy drink.
-     *
      * Overrides Item.allowableActions(Actor)
      *
      * @see Item#allowableActions(Actor)
@@ -65,7 +53,6 @@ public class EnergyDrink extends Item implements Consumable, Purchasable {
 
     /**
      * Heal the actor after consuming and removes the energy drink from the actor's inventory
-     *
      * Overrides Consumable.consumedBy(Actor)
      *
      * @see Consumable#consumedBy(Actor)
@@ -81,7 +68,6 @@ public class EnergyDrink extends Item implements Consumable, Purchasable {
 
     /**
      * Purchase an energy drink with a certain credit and add it to actor's item inventory
-     *
      * Overrides PurchaseCapable.purchase(Actor)
      *
      * @see Purchasable#purchase(Actor)

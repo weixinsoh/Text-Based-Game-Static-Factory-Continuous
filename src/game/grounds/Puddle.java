@@ -18,9 +18,6 @@ import game.scraps.specialscraps.Consumable;
  */
 public class Puddle extends Ground implements Consumable {
 
-    /**
-     * The amount of maximum health increased by the puddle
-     */
     private static final int PUDDLE_HEALTH = 1;
 
     /**

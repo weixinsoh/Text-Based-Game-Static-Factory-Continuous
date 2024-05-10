@@ -7,7 +7,7 @@ import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actions.AttackAction;
 
 /**
- * Class representing metal pipe.
+ * Class representing a metal pipe.
  *
  */
 public class MetalPipe extends WeaponItem {
@@ -22,7 +22,6 @@ public class MetalPipe extends WeaponItem {
 
     /**
      * Allow the actor to perform an attack using metal pipe.
-     *
      * Overrides WeaponItem.allowableActions(Actor, Location)
      *
      * @see WeaponItem#allowableActions(Actor, Location)

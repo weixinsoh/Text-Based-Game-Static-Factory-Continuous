@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.actors.Actor;
  *
  */
 public interface Consumable {
+
     /**
      * Add the effect to the actor after consuming.
      *

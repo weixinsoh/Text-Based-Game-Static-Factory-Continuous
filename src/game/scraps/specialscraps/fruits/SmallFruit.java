@@ -12,11 +12,7 @@ import game.scraps.specialscraps.Consumable;
  */
 public class SmallFruit extends Item implements Consumable {
 
-    /**
-     * The amount of points it can heal after consuming by the actor.
-     *
-     */
-    public static final int HEAL_POINTS = 1;
+    private static final int HEAL_POINTS = 1;
 
     /**
      * Constructor of the SmallFruit class.

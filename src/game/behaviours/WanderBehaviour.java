@@ -1,7 +1,6 @@
 package game.behaviours;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
@@ -12,16 +11,13 @@ import edu.monash.fit2099.engine.actors.Behaviour;
 import game.Utility;
 
 /**
+ * Class representing the behaviour to wander around the map.
  * Created by:
  * @author Riordan D. Alfredo
  * Modified by:
  *
  */
 
-/**
- * Class representing the behaviour to wander around the map.
- *
- */
 public class WanderBehaviour implements Behaviour {
     /**
      * Returns a MoveAction to wander to a random location, if possible.

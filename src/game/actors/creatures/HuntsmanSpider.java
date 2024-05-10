@@ -8,7 +8,6 @@ import game.actions.AttackAction;
 import game.behaviours.AttackBehaviour;
 import game.capabilities.Status;
 import game.behaviours.WanderBehaviour;
-import game.spawners.HuntsmanSpiderSpawner;
 
 /**
  * Class representing huntsman spider that can be spawned by the crater.
@@ -18,7 +17,6 @@ public class HuntsmanSpider extends Creature {
 
     private static final int WANDER_BEHAVIOUR_PRIORITY = 999;
     private static final int ATTACK_BEHAVIOUR_PRIORITY = 0;
-    private static final double SPAWN_PROBABILITY = 0.05;
 
     /**
      * Constructor of the HuntsmanSpider class.
@@ -40,7 +38,7 @@ public class HuntsmanSpider extends Creature {
      * @param otherActor the Actor that might be performing attack
      * @param direction  String representing the direction of the other Actor
      * @param map        current GameMap
-     * @return
+     * @return the valid actions that can be performed
      */
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
@@ -53,7 +51,6 @@ public class HuntsmanSpider extends Creature {
 
     /**
      * Return the intrinsic weapon of the huntsman spider.
-     *
      * Overrides Actor.getIntrinsicWeapon()
      *
      * @see Actor#getIntrinsicWeapon()
