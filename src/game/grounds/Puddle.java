@@ -11,8 +11,6 @@ import edu.monash.fit2099.engine.positions.Location;
 import game.actions.ConsumeAction;
 import game.scraps.specialscraps.Consumable;
 
-import java.util.Objects;
-
 /**
  * Class representing a puddle that extends from Ground and implements Consumable
  * It can be consumed by an Intern standing on the puddle
@@ -55,7 +53,7 @@ public class Puddle extends Ground implements Consumable {
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         ActionList actions = new ActionList();
-        if (Objects.equals(direction, "")){
+        if (direction.isEmpty()){
             actions.add(new ConsumeAction(this));
         }
         return actions;
