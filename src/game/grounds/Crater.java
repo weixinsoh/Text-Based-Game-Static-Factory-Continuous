@@ -44,10 +44,6 @@ public class Crater extends Ground {
             }
         }
         Location destination = exits.get(Utility.generateRandomInt(0, exits.size())).getDestination();
-
-        if(!location.containsAnActor()){
-            spawner.spawn(destination);
-
-        }
+        spawner.spawn(destination);
     }
 }
