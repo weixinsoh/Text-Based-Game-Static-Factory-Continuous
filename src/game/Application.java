@@ -12,8 +12,10 @@ import game.actors.creatures.HuntsmanSpider;
 import game.grounds.*;
 import game.grounds.trees.Sapling;
 import game.scraps.LargeBolt;
+import game.scraps.specialscraps.JarOfPickles;
 import game.scraps.specialscraps.MetalPipe;
 import game.scraps.MetalSheet;
+import game.scraps.specialscraps.PotOfGold;
 import game.spawners.AlienBugSpawner;
 import game.spawners.HuntsmanSpiderSpawner;
 import game.spawners.SuspiciousAstronautSpawner;
@@ -62,6 +64,12 @@ public class Application {
 
         MetalPipe metalPipe = new MetalPipe();
         gameMap.at(10, 10).addItem(metalPipe);
+
+        JarOfPickles jarOfPickles = new JarOfPickles();
+        gameMap.at(8,8).addItem(jarOfPickles);
+
+        PotOfGold potOfGold = new PotOfGold();
+        gameMap.at(8,9).addItem(potOfGold);
 
         Crater hunstmanSpiderCrater = new Crater(new HuntsmanSpiderSpawner());
         gameMap.at(9, 10).setGround(hunstmanSpiderCrater);
