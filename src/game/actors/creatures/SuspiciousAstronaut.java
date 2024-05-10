@@ -24,7 +24,7 @@ public class SuspiciousAstronaut extends Creature {
      *
      */
     public SuspiciousAstronaut() {
-        super("Suspicious Astronaut", 'ඞ', 99);
+        super("Suspicious Astronaut", '\u0D9E', 99);
         this.addCapability(Status.HOSTILE_TO_INTERN);
         this.addBehaviour(ATTACK_BEHAVIOUR_PRIORITY, new AttackBehaviour());
         this.addBehaviour(WANDER_BEHAVIOUR_PRIORITY, new WanderBehaviour());
