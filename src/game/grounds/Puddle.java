@@ -42,9 +42,9 @@ public class Puddle extends Ground implements Consumable {
 
     /**
      * Allow the actor to consume the Puddle
-     * Overrides Item.allowableActions(Actor)
+     * Overrides Ground.allowableActions(Actor, Location, String)
      *
-     * @see Item#allowableActions(Actor)
+     * @see Ground#allowableActions(Actor, Location, String)
      * @return a list of actions that can be performed on the Puddle
      */
     @Override

@@ -60,10 +60,10 @@ public class DragonSlayerReplica extends WeaponItem implements Purchasable {
     @Override
     public String purchase(Actor actor) {
         if (Math.random() <= SPECIAL_CASE_CHANCE) {
+            return String.format("%d credits are taken from %s, but %s doesn't receive anything in the return!", CREDIT, actor, actor);
+        } else {
             actor.addItemToInventory(this);
             return String.format("%s successfully purchased %s for %d credits.", actor, this, CREDIT);
-        } else {
-            return String.format("%d credits are taken from %s, but %s doesn't receive anything in the return!", CREDIT, actor, actor);
         }
     }
 }
