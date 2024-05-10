@@ -6,7 +6,7 @@ import edu.monash.fit2099.engine.actors.Actor;
  * Interface representing purchase-capable.
  *
  */
-public interface PurchaseCapable {
+public interface Purchasable {
 
     /**
      * Add the effect to the actor after purchasing.

@@ -7,7 +7,7 @@ import edu.monash.fit2099.engine.items.Item;
  * Class representing toilet paper roll that can be purchased by the computer terminal.
  *
  */
-public class ToiletPaperRoll extends Item implements PurchaseCapable {
+public class ToiletPaperRoll extends Item implements Purchasable {
 
     /**
      * The amount of credits required for a standard purchase.
@@ -50,7 +50,7 @@ public class ToiletPaperRoll extends Item implements PurchaseCapable {
      *
      * Overrides PurchaseCapable.purchase(Actor)
      *
-     * @see PurchaseCapable#purchase(Actor)
+     * @see Purchasable#purchase(Actor)
      * @param actor The actor who purchases toilet paper roll.
      * @return a string representing the actor purchases the toilet paper roll with a certain credit.
      */

@@ -11,7 +11,7 @@ import game.capabilities.Status;
  * Class representing dragon slayer replica that can be purchased by the computer terminal.
  *
  */
-public class DragonSlayerReplica extends WeaponItem implements PurchaseCapable {
+public class DragonSlayerReplica extends WeaponItem implements Purchasable {
 
     /**
      * The amount of credits required for a purchase.
@@ -62,7 +62,7 @@ public class DragonSlayerReplica extends WeaponItem implements PurchaseCapable {
      *
      * Overrides PurchaseCapable.purchase(Actor)
      *
-     * @see PurchaseCapable#purchase(Actor)
+     * @see Purchasable#purchase(Actor)
      * @param actor The actor who purchases dragon slayer replica.
      * @return a string representing the actor purchases the dragon slayer replica with a certain credit.
      */

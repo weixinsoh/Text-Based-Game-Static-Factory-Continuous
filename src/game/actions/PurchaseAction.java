@@ -3,7 +3,7 @@ package game.actions;
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
-import game.scraps.specialscraps.PurchaseCapable;
+import game.scraps.specialscraps.Purchasable;
 
 /**
  * Class representing an action to purchase.
@@ -14,14 +14,14 @@ public class PurchaseAction extends Action {
     /**
      * A purchasable object for purchase action to be performed on.
      */
-    public PurchaseCapable purchasedItem;
+    public Purchasable purchasedItem;
 
     /**
      * Constructor of the PurchaseAction class.
      *
      * @param purchasedItem object to be purchase.
      */
-    public PurchaseAction(PurchaseCapable purchasedItem){
+    public PurchaseAction(Purchasable purchasedItem){
         this.purchasedItem = purchasedItem;
     }
 
@@ -37,13 +37,13 @@ public class PurchaseAction extends Action {
      */
     @Override
     public String execute(Actor actor, GameMap map) {
-        int credit = this.purchasedItem.getActualCredit();
-        if (actor.getBalance() >= credit){
-            actor.deductBalance(credit);
+        int creditRequired = this.purchasedItem.getActualCredit();
+        int balance = actor.getBalance();
+        if (balance >= creditRequired){
+            actor.deductBalance(creditRequired);
             return purchasedItem.purchase(actor);
         } else
-            return String.format("Balance is not sufficient to make the payment (%d < %d). Purchase failed!", actor.getBalance(), credit);
-
+            return String.format("Balance is not sufficient to make the payment (%d < %d). Purchase failed!", balance, creditRequired);
     }
 
     /**
