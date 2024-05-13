@@ -1,5 +1,6 @@
 package game;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -35,7 +36,8 @@ public class Application {
         FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(),
                 new Wall(), new Floor(), new Puddle(), new Sapling());
 
-        List<String> map = Arrays.asList(
+        // Polymorphia
+        List<String> polymorphia = Arrays.asList(
                         "...~~~~.........~~~...........",
                         "...~~~~.......................",
                         "...~~~........................",
@@ -52,35 +54,84 @@ public class Application {
                         ".....~~~~~~~~~~~~~~~~........~",
                         ".....~~~~~~~~~~~~~~~~~~~....~~");
 
-        GameMap gameMap = new GameMap(groundFactory, map);
-        world.addGameMap(gameMap);
+        // Factory's spaceship parking lot
+        List<String> parkingLot = Arrays.asList(
+                        ".......",
+                        ".#####.",
+                        ".#___#.",
+                        ".#___#.",
+                        ".##_##.",
+                        ".......",
+                        ".......",
+                        ".......",
+                        ".......",
+                        ".......");
+
+        // New moon
+        List<String> moon = Arrays.asList(
+                        "..........................~~~~",
+                        "..........................~~~~",
+                        "..........................~~~~",
+                        "~..........................~..",
+                        "~~...........#####............",
+                        "~~~..........#___#............",
+                        "~~~..........#___#............",
+                        "~~~..........##_##............",
+                        "~~~..................~~.......",
+                        "~~~~................~~~~......",
+                        "~~~~...............~~~~~......",
+                        "..~................~~~~.......",
+                        "....................~~........",
+                        ".............~~...............",
+                        "............~~~~..............");
+
+        GameMap polymorphiaMap = new GameMap(groundFactory, polymorphia);
+        GameMap parkingLotMap = new GameMap(groundFactory, parkingLot);
+        GameMap moonMap = new GameMap(groundFactory, moon);
+
+        List<GameMap> maps = new ArrayList<>();
+        maps.add(polymorphiaMap);
+        maps.add(parkingLotMap);
+        maps.add(moonMap);
+
+        for (GameMap map: maps){
+            world.addGameMap(map);
+            ComputerTerminal computerTerminal = new ComputerTerminal();
+            map.at(15, 5).setGround(computerTerminal);
+
+            for (GameMap otherMap: maps){
+                if (!otherMap.equals(map)){
+                    computerTerminal.addTravelMap(otherMap);
+                }
+            }
+        }
 
         LargeBolt largeBolt = new LargeBolt();
-        gameMap.at(8, 2).addItem(largeBolt);
+        polymorphiaMap.at(8, 2).addItem(largeBolt);
 
         MetalSheet metalSheet = new MetalSheet();
-        gameMap.at(6, 2).addItem(metalSheet);
+        polymorphiaMap.at(6, 2).addItem(metalSheet);
 
         MetalPipe metalPipe = new MetalPipe();
-        gameMap.at(10, 10).addItem(metalPipe);
+        polymorphiaMap.at(10, 10).addItem(metalPipe);
 
         JarOfPickles jarOfPickles = new JarOfPickles();
-        gameMap.at(8,8).addItem(jarOfPickles);
+        polymorphiaMap.at(8,8).addItem(jarOfPickles);
 
         PotOfGold potOfGold = new PotOfGold();
-        gameMap.at(8,9).addItem(potOfGold);
+        polymorphiaMap.at(8,9).addItem(potOfGold);
 
         Crater hunstmanSpiderCrater = new Crater(new HuntsmanSpiderSpawner());
-        gameMap.at(9, 10).setGround(hunstmanSpiderCrater);
+        polymorphiaMap.at(9, 10).setGround(hunstmanSpiderCrater);
 
         Crater alienBugCrater = new Crater(new AlienBugSpawner());
-        gameMap.at(12, 12).setGround(alienBugCrater);
+        polymorphiaMap.at(12, 12).setGround(alienBugCrater);
 
         Crater suspiciousAstronautCrater = new Crater(new SuspiciousAstronautSpawner());
-        gameMap.at(16, 12).setGround(suspiciousAstronautCrater);
+        polymorphiaMap.at(16, 12).setGround(suspiciousAstronautCrater);
 
-        ComputerTerminal computerTerminal = new ComputerTerminal();
-        gameMap.at(15, 5).setGround(computerTerminal);
+        Player player = new Player("Intern", '@', 4);
+        world.addPlayer(player, polymorphiaMap.at(15, 6));
 
         for (String line : FancyMessage.TITLE.split("\n")) {
             new Display().println(line);
@@ -90,10 +141,6 @@ public class Application {
                 exception.printStackTrace();
             }
         }
-
-
-        Player player = new Player("Intern", '@', 4);
-        world.addPlayer(player, gameMap.at(15, 6));
 
         world.run();
     }
