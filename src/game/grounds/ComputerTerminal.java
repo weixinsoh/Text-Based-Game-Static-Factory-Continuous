@@ -1,14 +1,14 @@
 package game.grounds;
 
 import edu.monash.fit2099.engine.actions.ActionList;
+import edu.monash.fit2099.engine.actions.MoveActorAction;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.positions.Exit;
+import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actions.PurchaseAction;
-import game.scraps.specialscraps.DragonSlayerReplica;
-import game.scraps.specialscraps.EnergyDrink;
-import game.scraps.specialscraps.ToiletPaperRoll;
-import game.scraps.specialscraps.Purchasable;
+import game.scraps.specialscraps.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +18,8 @@ import java.util.List;
  *
  */
 public class ComputerTerminal extends Ground {
+
+    private List<GameMap> travelMaps = new ArrayList<>();
 
     /**
      * Constructor of the ComputerTerminal class.
@@ -37,7 +39,12 @@ public class ComputerTerminal extends Ground {
         purchasedItems.add(new EnergyDrink());
         purchasedItems.add(new DragonSlayerReplica());
         purchasedItems.add(new ToiletPaperRoll());
+        purchasedItems.add(new Theseus());
         return purchasedItems;
+    }
+
+    public void addTravelMap(GameMap map){
+        travelMaps.add(map);
     }
 
     /**
@@ -53,6 +60,9 @@ public class ComputerTerminal extends Ground {
         ActionList actions = new ActionList();
         for (Purchasable purchasedItem: this.allowablePurchasedItems()){
             actions.add(new PurchaseAction(purchasedItem));
+        }
+
+        for (GameMap map: travelMaps){
         }
         return actions;
     }
