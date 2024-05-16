@@ -95,6 +95,8 @@ public class Application {
         Player player = new Player("Intern", '@', 4);
         world.addPlayer(player, gameMap.at(15, 6));
 
+        player.addBalance(50);
+
         world.run();
     }
 }

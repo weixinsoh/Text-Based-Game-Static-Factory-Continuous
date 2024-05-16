@@ -5,10 +5,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actions.PurchaseAction;
-import game.scraps.specialscraps.DragonSlayerReplica;
-import game.scraps.specialscraps.EnergyDrink;
-import game.scraps.specialscraps.ToiletPaperRoll;
-import game.scraps.specialscraps.Purchasable;
+import game.scraps.specialscraps.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +34,7 @@ public class ComputerTerminal extends Ground {
         purchasedItems.add(new EnergyDrink());
         purchasedItems.add(new DragonSlayerReplica());
         purchasedItems.add(new ToiletPaperRoll());
+        purchasedItems.add(new Astley());
         return purchasedItems;
     }
 

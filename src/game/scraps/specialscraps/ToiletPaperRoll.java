@@ -15,12 +15,18 @@ public class ToiletPaperRoll extends Item implements Purchasable {
 
     private static final double SPECIAL_CASE_CHANCE = 0.75;
 
+    private final int actual_credit;
+
     /**
      * Constructor of ToiletPaperRoll class.
      *
      */
     public ToiletPaperRoll() {
         super("Toilet Paper Roll", 's', true);
+        if (Math.random() <= SPECIAL_CASE_CHANCE)
+            actual_credit = SPECIAL_CASE_CREDIT;
+        else
+            actual_credit = CREDIT;
     }
 
     /**
@@ -29,10 +35,7 @@ public class ToiletPaperRoll extends Item implements Purchasable {
      * @return the amount of actual credits
      */
     public int getActualCredit(){
-        if (Math.random() <= SPECIAL_CASE_CHANCE)
-            return SPECIAL_CASE_CREDIT;
-        else
-            return CREDIT;
+        return actual_credit;
     }
 
     /**
