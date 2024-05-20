@@ -1,34 +1,17 @@
 package game.grounds.trees;
 
-import edu.monash.fit2099.engine.positions.Location;
+
+import game.plantactions.DropFruitAction;
 import game.scraps.specialscraps.fruits.BigFruit;
 
-/**
- * Class representing the mature stage of the inheritree.
- *
- */
 public class MatureTree extends Inheritree {
 
-    private static final double DROPPING_PROBABILITY = 0.3;
+    private static final double MATURE_FRUIT_DROPPING_PROBABILITY = 0.3;
 
-    /**
-     * Constructor of the MatureTree class.
-     *
-     */
-    public MatureTree() {
-        super('T', DROPPING_PROBABILITY);
-    }
+    private static final int MATURE_DROP_FRUIT_ACTION_PRIORITY = 999;
 
-    /**
-     * Drop a big fruit.
-     *
-     * Overrides Inheritree.dropFruit(Location)
-     *
-     * @see Inheritree#dropFruit(Location)
-     * @param location the location to drop the fruit.
-     */
-    @Override
-    public void dropFruit(Location location) {
-        location.addItem(new BigFruit());
+    public MatureTree(){
+        super('T');
+        this.addPlantAction(MATURE_DROP_FRUIT_ACTION_PRIORITY, new DropFruitAction(MATURE_FRUIT_DROPPING_PROBABILITY, new BigFruit()));
     }
 }
