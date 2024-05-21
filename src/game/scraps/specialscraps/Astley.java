@@ -27,20 +27,20 @@ public class Astley extends Item implements Purchasable, Monologuer {
         super("Astley", 'z', true);
     }
 
-//    @Override
-//    public void tick(Location currentLocation, Actor actor) {
-//        Display display = new Display();
-//        count++;
-//        if (this.count % TICKS_TO_PAY_SUBSCRIPTION == 0) {
-//            if (actor.getBalance() >= CREDIT_TO_PAY_SUBSCRIPTION){
-//                actor.deductBalance(CREDIT_TO_PAY_SUBSCRIPTION);
-//                display.println("Subscription payment received!");
-//            } else {
-//                isSubscribed = false;
-//                display.println("You don't have enough money to continue using our AI services. Goodbye.");
-//            }
-//        }
-//    }
+    @Override
+    public void tick(Location currentLocation, Actor actor) {
+        Display display = new Display();
+        count++;
+        if (this.count % TICKS_TO_PAY_SUBSCRIPTION == 0) {
+            if (actor.getBalance() >= CREDIT_TO_PAY_SUBSCRIPTION){
+                actor.deductBalance(CREDIT_TO_PAY_SUBSCRIPTION);
+                display.println("Subscription payment received!");
+            } else {
+                isSubscribed = false;
+                display.println("You don't have enough money to continue using our AI services. Goodbye.");
+            }
+        }
+    }
 
     @Override
     public ActionList allowableActions(Actor owner){
