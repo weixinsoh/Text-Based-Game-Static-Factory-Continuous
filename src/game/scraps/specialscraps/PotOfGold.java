@@ -3,13 +3,17 @@ package game.scraps.specialscraps;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
+import edu.monash.fit2099.engine.positions.Location;
 import game.actions.ConsumeAction;
+import game.actions.SellAction;
+import game.capabilities.Status;
+import game.scraps.Sellable;
 
 /**
  * Class that represents a Pot of Gold that can be used by the intern to add 10 gold to the Intern's balance
  *
  */
-public class PotOfGold extends Item implements Consumable {
+public class PotOfGold extends Item implements Consumable, Sellable {
 
     private static final int POT_OF_GOLD_BALANCE = 10;
 
@@ -48,5 +52,27 @@ public class PotOfGold extends Item implements Consumable {
         ActionList actions = new ActionList();
         actions.add(new ConsumeAction(this));
         return actions;
+    }
+    @Override
+    public ActionList allowableActions(Actor otherActor, Location location){
+        ActionList actions = new ActionList();
+        if(otherActor.hasCapability(Status.BUYER)){
+            actions.add(new SellAction(this));
+        }
+        return actions;
+    }
+
+    @Override
+    public int getCreditForSale() {
+        if (Math.random() <= 0.25){
+            return 0;
+        } else {
+            return 500;
+        }
+    }
+
+    @Override
+    public Item soldBy() {
+        return this;
     }
 }
