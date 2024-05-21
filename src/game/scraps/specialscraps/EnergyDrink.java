@@ -17,12 +17,18 @@ public class EnergyDrink extends Item implements Consumable, Purchasable {
 
     private static final double SPECIAL_CASE_CHANCE = 0.2;
 
+    private final int actual_credit;
+
     /**
      * Constructor of EnergyDrink class.
      *
      */
     public EnergyDrink() {
         super("Energy Drink", '*', true);
+        if (Math.random() <= SPECIAL_CASE_CHANCE)
+            actual_credit = CREDIT * 2;
+        else
+            actual_credit = CREDIT;
     }
 
     /**
@@ -31,10 +37,7 @@ public class EnergyDrink extends Item implements Consumable, Purchasable {
      * @return the amount of actual credits
      */
     public int getActualCredit(){
-        if (Math.random() <= SPECIAL_CASE_CHANCE)
-            return CREDIT * 2;
-        else
-            return CREDIT;
+        return actual_credit;
     }
 
     /**
