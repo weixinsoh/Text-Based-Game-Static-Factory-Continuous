@@ -22,9 +22,11 @@ public class LargeBolt extends Item implements Sellable{
     @Override
     public ActionList allowableActions(Actor otherActor, Location location){
         ActionList actions = new ActionList();
+
         if(otherActor.hasCapability(Status.BUYER)){
             actions.add(new SellAction(this));
         }
+
         return actions;
     }
 

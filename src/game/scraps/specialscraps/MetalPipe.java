@@ -2,16 +2,19 @@ package game.scraps.specialscraps;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actions.AttackAction;
+import game.actions.SellAction;
 import game.capabilities.Status;
+import game.scraps.Sellable;
 
 /**
  * Class representing a metal pipe.
  *
  */
-public class MetalPipe extends WeaponItem {
+public class MetalPipe extends WeaponItem implements Sellable {
 
     /**
      * Constructor of MetalPipe class.
@@ -31,8 +34,24 @@ public class MetalPipe extends WeaponItem {
     @Override
     public ActionList allowableActions(Actor otherActor, Location location){
         ActionList actions = new ActionList();
+
         if (otherActor.hasCapability(Status.HOSTILE_TO_INTERN))
             actions.add(new AttackAction(otherActor, location.toString(), this));
+
+        if(otherActor.hasCapability(Status.BUYER)){
+            actions.add(new SellAction(this));
+        }
+
         return actions;
+    }
+
+    @Override
+    public int getCreditForSale() {
+        return 35;
+    }
+
+    @Override
+    public Item soldBy() {
+        return this;
     }
 }

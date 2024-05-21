@@ -3,7 +3,10 @@ package game.scraps.specialscraps.fruits;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
+import edu.monash.fit2099.engine.positions.Location;
 import game.actions.ConsumeAction;
+import game.actions.SellAction;
+import game.capabilities.Status;
 import game.scraps.Sellable;
 import game.scraps.specialscraps.Consumable;
 
@@ -45,10 +48,16 @@ public class BigFruit extends Item implements Consumable, Sellable {
      * @see Item#allowableActions(Actor)
      * @return a list of actions that can be performed on the Big Fruit.
      */
+
     @Override
-    public ActionList allowableActions(Actor owner) {
+    public ActionList allowableActions(Actor otherActor, Location location){
         ActionList actions = new ActionList();
         actions.add(new ConsumeAction(this));
+
+        if(otherActor.hasCapability(Status.BUYER)){
+            actions.add(new SellAction(this));
+        }
+
         return actions;
     }
 
