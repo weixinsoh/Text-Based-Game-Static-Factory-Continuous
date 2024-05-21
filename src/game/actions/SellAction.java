@@ -16,5 +16,7 @@ public class SellAction extends Action {
     public String execute(Actor actor, GameMap map) {return null;}
 
     @Override
-    public String menuDescription(Actor actor){return null;}
+    public String menuDescription(Actor actor){
+        return  actor + " sells " + sellableItem;
+    }
 }
