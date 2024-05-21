@@ -56,11 +56,16 @@ public class JarOfPickles extends Item implements Consumable, Sellable {
      * @see Item#allowableActions(Actor)
      * @return a list of actions that can be performed on the consumable item Jar Of Pickles
      */
+    @Override
+    public ActionList allowableActions(Actor owner) {
+        ActionList actions = new ActionList();
+        actions.add(new ConsumeAction(this));
+        return actions;
+    }
 
     @Override
     public ActionList allowableActions(Actor otherActor, Location location){
         ActionList actions = new ActionList();
-        actions.add(new ConsumeAction(this));
         if(otherActor.hasCapability(Status.BUYER)){
             actions.add(new SellAction(this));
         }
