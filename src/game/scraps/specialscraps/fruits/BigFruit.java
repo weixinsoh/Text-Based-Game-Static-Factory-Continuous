@@ -4,13 +4,14 @@ import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import game.actions.ConsumeAction;
+import game.scraps.Sellable;
 import game.scraps.specialscraps.Consumable;
 
 /**
  * Class representing big fruit that can be produced by the mature stage of the inheritree.
  *
  */
-public class BigFruit extends Item implements Consumable {
+public class BigFruit extends Item implements Consumable, Sellable {
 
     private static final int HEAL_POINTS = 2;
 
@@ -49,5 +50,15 @@ public class BigFruit extends Item implements Consumable {
         ActionList actions = new ActionList();
         actions.add(new ConsumeAction(this));
         return actions;
+    }
+
+    @Override
+    public int getCreditForSale() {
+        return 30;
+    }
+
+    @Override
+    public Item soldBy() {
+        return this;
     }
 }
