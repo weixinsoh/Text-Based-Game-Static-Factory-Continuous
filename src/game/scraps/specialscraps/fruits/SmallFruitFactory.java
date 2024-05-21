@@ -3,7 +3,7 @@ package game.scraps.specialscraps.fruits;
 import edu.monash.fit2099.engine.positions.Location;
 
 public class SmallFruitFactory implements FruitFactory{
-    private static final double SMALL_FRUIT_DROP_PROBABILITY = 0.9;
+    private static final double SMALL_FRUIT_DROP_PROBABILITY = 0.3;
 
     /**
      * The method that spawns a new Big Fruit with a specific probability

@@ -4,7 +4,7 @@ import edu.monash.fit2099.engine.positions.Location;
 
 public class BigFruitFactory implements FruitFactory{
 
-    private static final double BIG_FRUIT_DROP_PROBABILITY = 0.3;
+    private static final double BIG_FRUIT_DROP_PROBABILITY = 0.2;
 
     /**
      * The method that spawns a new Big Fruit with a specific probability
