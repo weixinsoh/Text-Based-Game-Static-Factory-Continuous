@@ -50,20 +50,20 @@ public class Astley extends Item implements Purchasable, Monologuer {
         return actions;
     }
 
-//    @Override
-//    public List<String> allowableMonologues(Actor owner){
-//        List<String> monologues = new ArrayList<>();
-//        monologues.add("The factory will never gonna give you up, valuable intern!");
-//        monologues.add("We promise we never gonna let you down with a range of staff benefits.");
-//        monologues.add("We never gonna run around and desert you, dear intern!");
-//        if (owner.getItemInventory().size() > 10)
-//            monologues.add("We never gonna make you cry with unfair compensation.");
-//        if (owner.getBalance() > 50)
-//            monologues.add("Trust is essential in this business. We promise we never gonna say goodbye to a valuable intern like you.");
-//        if (owner.getAttribute(BaseActorAttributes.HEALTH) < 2)
-//            monologues.add("Don't worry, we never gonna tell a lie and hurt you, unlike those hostile creatures.");
-//        return monologues;
-//    }
+    @Override
+    public List<String> allowableMonologues(Actor owner){
+        List<String> monologues = new ArrayList<>();
+        monologues.add("The factory will never gonna give you up, valuable intern!");
+        monologues.add("We promise we never gonna let you down with a range of staff benefits.");
+        monologues.add("We never gonna run around and desert you, dear intern!");
+        if (owner.getItemInventory().size() > 10)
+            monologues.add("We never gonna make you cry with unfair compensation.");
+        if (owner.getBalance() > 50)
+            monologues.add("Trust is essential in this business. We promise we never gonna say goodbye to a valuable intern like you.");
+        if (owner.getAttribute(BaseActorAttributes.HEALTH) < 2)
+            monologues.add("Don't worry, we never gonna tell a lie and hurt you, unlike those hostile creatures.");
+        return monologues;
+    }
 
     @Override
     public String purchase(Actor actor) {
