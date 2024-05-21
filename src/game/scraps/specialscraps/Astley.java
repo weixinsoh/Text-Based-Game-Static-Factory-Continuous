@@ -41,14 +41,14 @@ public class Astley extends Item implements Purchasable, Monologuer {
 //            }
 //        }
 //    }
-//
-//    @Override
-//    public ActionList allowableActions(Actor owner){
-//        ActionList actions = new ActionList();
-//        if (isSubscribed)
-//            actions.add(new ListenAction(this));
-//        return actions;
-//    }
+
+    @Override
+    public ActionList allowableActions(Actor owner){
+        ActionList actions = new ActionList();
+        if (isSubscribed)
+            actions.add(new ListenAction(this));
+        return actions;
+    }
 
 //    @Override
 //    public List<String> allowableMonologues(Actor owner){
