@@ -6,8 +6,6 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.Location;
 import game.Utility;
-import game.actions.TravelAction;
-import jdk.jshell.execution.Util;
 
 public class Theseus extends Item implements Purchasable{
     private static final int CREDIT = 100;
@@ -33,9 +31,14 @@ public class Theseus extends Item implements Purchasable{
     @Override
     public ActionList allowableActions(Location location){
         ActionList actions = new ActionList();
-        int x = Utility.generateRandomInt(location.map().getXRange().min(), location.map().getYRange().min());
+        System.out.println(location.map().getXRange().min());
+        System.out.println(location.map().getXRange().max());
+        int x = Utility.generateRandomInt(location.map().getXRange().min(), location.map().getXRange().max());
         int y = Utility.generateRandomInt(location.map().getYRange().min(), location.map().getYRange().max());
-        actions.add(new TravelAction(location.map().at(x, y), "current map"));
+        Location newLocation = location.map().at(x, y);
+        if (!newLocation.containsAnActor()) {
+            actions.add(new MoveActorAction(newLocation, "current map"));
+        }
         return actions;
     }
 }
