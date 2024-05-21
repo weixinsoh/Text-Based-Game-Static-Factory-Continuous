@@ -1,12 +1,18 @@
 package game.scraps;
 
+import edu.monash.fit2099.engine.actions.ActionList;
+import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
+import edu.monash.fit2099.engine.positions.Location;
+import game.actions.AttackAction;
+import game.actions.SellAction;
+import game.capabilities.Status;
 
 /**
  * Class representing metal sheet.
  *
  */
-public class MetalSheet extends Item {
+public class MetalSheet extends Item implements Sellable{
     /**
      * Constructor of MetalSheet class.
      *
@@ -15,4 +21,26 @@ public class MetalSheet extends Item {
         super("metal sheet", '%', true);
     }
 
+    @Override
+    public ActionList allowableActions(Actor otherActor, Location location){
+        ActionList actions = new ActionList();
+        if(otherActor.hasCapability(Status.BUYER)){
+            actions.add(new SellAction(this));
+        }
+        return actions;
+    }
+
+    @Override
+    public int getCreditForSale() {
+        if (Math.random() <= 0.6){
+            return 10;
+        } else {
+            return 20;
+        }
+    }
+
+    @Override
+    public Item soldBy() {
+        return this;
+    }
 }
