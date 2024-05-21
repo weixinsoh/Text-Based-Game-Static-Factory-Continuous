@@ -1,56 +1,58 @@
 package game.grounds.trees;
 
-import edu.monash.fit2099.engine.positions.Exit;
+import edu.monash.fit2099.engine.actions.Action;
+import edu.monash.fit2099.engine.actions.ActionList;
+import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.displays.Display;
+import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
-import game.Utility;
+import game.plantactions.PlantAction;
 
-import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
-/**
- * Abstract base class representing inheritree.
- *
- */
 public abstract class Inheritree extends Ground {
-
-    private final double droppingProbability;
+    private Map<Integer, PlantAction> plantActions = new TreeMap<>();
 
     /**
      * Constructor of the Inheritree class.
      *
      * @param displayChar the character that will represent the Inheritree in the display
-     * @param droppingProbability a double representing the probability of dropping a fruit.
      */
-    public Inheritree(char displayChar, double droppingProbability) {
+    public Inheritree(char displayChar) {
         super(displayChar);
-        this.droppingProbability = droppingProbability;
+
     }
 
     /**
-     * Drop a fruit.
+     * Add a behaviour to the TreeMap behaviours with given key.
      *
-     * @param location the location to drop the fruit.
+     * @param key An integer to indicate the priority of the behaviour.
+     * @param plantAction The plantBehaviour to add to.
      */
-    public abstract void dropFruit(Location location);
+    public void addPlantAction(int key, PlantAction plantAction) {
+        plantActions.put(key, plantAction);
+    }
 
     /**
-     * Drop fruit with a probability.
-     * Overrides Ground.tick(Location)
+     * At each turn, select a valid action to perform.
+     * Overrides Actor.playTurn(ActionList, Action, GameMap, Display)
      *
-     * @see Ground#tick(Location)
-     * @param location The location of the Ground.
+     * @see Actor#playTurn(ActionList, Action, GameMap, Display)
+     * @param location Location
      */
     @Override
-    public void tick(Location location) {
-        List<Exit> exits = location.getExits();
-        Location destination = exits.get(Utility.generateRandomInt(0, exits.size())).getDestination();
-        if (Math.random() <= droppingProbability) {
-            dropFruit(destination);
+    public void tick(Location location){
+        for(PlantAction plantAction: plantActions.values()){
+            if(plantAction.executeAction(location)){
+                return;
+            }
         }
     }
 
     /**
-     * Set inheritree to block thrown objects.
+     * Set Inheritree to block thrown objects.
      * Overrides Ground.blocksThrownObjects()
      *
      * @see Ground#blocksThrownObjects()
@@ -60,4 +62,5 @@ public abstract class Inheritree extends Ground {
     public boolean blocksThrownObjects() {
         return true;
     }
+
 }

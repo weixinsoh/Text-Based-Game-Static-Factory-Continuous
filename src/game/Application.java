@@ -9,7 +9,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
 import game.actors.Player;
 import game.grounds.*;
-import game.grounds.trees.Sapling;
+import game.grounds.trees.SproutTree;
 import game.scraps.LargeBolt;
 import game.scraps.specialscraps.JarOfPickles;
 import game.scraps.specialscraps.MetalPipe;
@@ -33,7 +33,7 @@ public class Application {
         World world = new World(new Display());
 
         FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(),
-                new Wall(), new Floor(), new Puddle(), new Sapling());
+                new Wall(), new Floor(), new Puddle(), new SproutTree());
 
         List<String> map = Arrays.asList(
                         "...~~~~.........~~~...........",
@@ -42,7 +42,7 @@ public class Application {
                         "..............................",
                         ".............#####............",
                         ".............#___#...........~",
-                        "........t....#___#..........~~",
+                        ".............#___#..........~~",
                         ".............##_##.........~~~",
                         ".................~~........~~~",
                         "................~~~~.......~~~",
@@ -54,6 +54,8 @@ public class Application {
 
         GameMap gameMap = new GameMap(groundFactory, map);
         world.addGameMap(gameMap);
+
+        gameMap.at(6,6).setGround(new SproutTree());
 
         LargeBolt largeBolt = new LargeBolt();
         gameMap.at(8, 2).addItem(largeBolt);
