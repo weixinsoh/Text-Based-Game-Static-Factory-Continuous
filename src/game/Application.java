@@ -8,7 +8,7 @@ import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.World;
 import game.actors.Player;
 import game.grounds.*;
-import game.grounds.trees.Sapling;
+import game.grounds.trees.SproutTree;
 import game.scraps.LargeBolt;
 import game.scraps.specialscraps.JarOfPickles;
 import game.scraps.specialscraps.MetalPipe;
@@ -32,7 +32,7 @@ public class Application {
         World world = new World(new Display());
 
         FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(),
-                new Wall(), new Floor(), new Puddle(), new Sapling(), new ComputerTerminal());
+                new Wall(), new Floor(), new Puddle(), new SproutTree(), new ComputerTerminal());
 
         // Polymorphia
         List<String> polymorphia = Arrays.asList(
@@ -42,7 +42,7 @@ public class Application {
                 "..............................",
                 ".............#####............",
                 ".............#___#...........~",
-                "........t....#___#..........~~",
+                "........,....#___#..........~~",
                 ".............##_##.........~~~",
                 ".................~~........~~~",
                 "................~~~~.......~~~",
@@ -149,12 +149,6 @@ public class Application {
                 exception.printStackTrace();
             }
         }
-
-
-        Player player = new Player("Intern", '@', 4);
-        world.addPlayer(player, gameMap.at(15, 6));
-
-        player.addBalance(50);
 
         world.run();
     }

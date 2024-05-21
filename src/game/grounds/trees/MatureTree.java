@@ -7,7 +7,6 @@ import game.scraps.specialscraps.fruits.BigFruitFactory;
 
 public class MatureTree extends Inheritree {
 
-
     private static final int MATURE_DROP_FRUIT_ACTION_PRIORITY = 999;
 
     public MatureTree(){
