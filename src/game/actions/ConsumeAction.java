@@ -10,7 +10,7 @@ import game.scraps.specialscraps.Consumable;
  *
  */
 public class ConsumeAction extends Action {
-    Consumable consumable;
+    private Consumable consumable;
 
     /**
      * Constructor of the ConsumeAction class.

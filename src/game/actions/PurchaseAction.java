@@ -14,7 +14,7 @@ public class PurchaseAction extends Action {
     /**
      * A purchasable object for purchase action to be performed on.
      */
-    public Purchasable purchasedItem;
+    private Purchasable purchasedItem;
 
     /**
      * Constructor of the PurchaseAction class.
