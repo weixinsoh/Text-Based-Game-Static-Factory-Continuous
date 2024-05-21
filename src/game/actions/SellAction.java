@@ -13,7 +13,12 @@ public class SellAction extends Action {
         this.sellableItem = sellableItem;
     }
     @Override
-    public String execute(Actor actor, GameMap map) {return null;}
+    public String execute(Actor actor, GameMap map) {
+        int saleCredits = sellableItem.getCreditForSale();
+        actor.addBalance(saleCredits);
+        actor.removeItemFromInventory(sellableItem.soldBy());
+        return actor.toString() +  " successfully sold " + sellableItem + " for " + saleCredits + " credits.";
+    }
 
     @Override
     public String menuDescription(Actor actor){
