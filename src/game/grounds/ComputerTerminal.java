@@ -36,6 +36,7 @@ public class ComputerTerminal extends Ground {
         purchasedItems.add(new DragonSlayerReplica());
         purchasedItems.add(new ToiletPaperRoll());
         purchasedItems.add(new Theseus());
+        purchasedItems.add(new Astley());
         return purchasedItems;
     }
 
