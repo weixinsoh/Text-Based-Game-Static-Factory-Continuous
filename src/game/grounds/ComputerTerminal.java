@@ -1,10 +1,11 @@
 package game.grounds;
 
 import edu.monash.fit2099.engine.actions.ActionList;
+import edu.monash.fit2099.engine.actions.MoveActorAction;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.positions.Ground;
-import edu.monash.fit2099.engine.positions.Location;
+import edu.monash.fit2099.engine.positions.*;
 import game.actions.PurchaseAction;
+import game.GameMapFactory;
 import game.scraps.specialscraps.*;
 
 import java.util.ArrayList;
@@ -12,13 +13,13 @@ import java.util.List;
 
 /**
  * Class representing the computer terminal that sells items.
- *
  */
 public class ComputerTerminal extends Ground {
 
+    private List<GameMapFactory> travelMapFactories = new ArrayList<>();
+
     /**
      * Constructor of the ComputerTerminal class.
-     *
      */
     public ComputerTerminal() {
         super('=');
@@ -29,28 +30,41 @@ public class ComputerTerminal extends Ground {
      *
      * @return a list containing all purchasable items found in the computer terminal
      */
-    public List<Purchasable> allowablePurchasedItems(){
+    public List<Purchasable> allowablePurchasedItems() {
         List<Purchasable> purchasedItems = new ArrayList<>();
         purchasedItems.add(new EnergyDrink());
         purchasedItems.add(new DragonSlayerReplica());
         purchasedItems.add(new ToiletPaperRoll());
-        purchasedItems.add(new Astley());
+        purchasedItems.add(new Theseus());
         return purchasedItems;
+    }
+
+    public void addTravelMap(GameMapFactory mapFactory) {
+        travelMapFactories.add(mapFactory);
     }
 
     /**
      * Allow actor to perform a purchase action.
      *
-     * @param actor the actor who going to purchase item in the computer terminal
-     * @param location the current Location
+     * @param actor     the actor who going to purchase item in the computer terminal
+     * @param location  the current Location
      * @param direction the direction of the computer terminal from the actor
      * @return a list of actions that can be performed by the actor
      */
     @Override
     public ActionList allowableActions(Actor actor, Location location, String direction) {
         ActionList actions = new ActionList();
-        for (Purchasable purchasedItem: this.allowablePurchasedItems()){
+        for (Purchasable purchasedItem : this.allowablePurchasedItems()) {
             actions.add(new PurchaseAction(purchasedItem));
+        }
+
+        for (GameMapFactory mapFactory : travelMapFactories) {
+            if (location.map() != mapFactory.getMap()){
+                Location newLocation = mapFactory.getMap().at(mapFactory.getTravelXLocation(), mapFactory.getTravelYLocation());
+                if (!newLocation.containsAnActor()) {
+                    actions.add(new MoveActorAction(newLocation, mapFactory.getMapName()));
+                }
+            }
         }
         return actions;
     }
