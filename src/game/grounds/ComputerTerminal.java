@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.*;
 import game.actions.PurchaseAction;
 import game.GameMapFactory;
+import game.actions.TravelAction;
 import game.scraps.specialscraps.*;
 
 import java.util.ArrayList;
@@ -62,9 +63,7 @@ public class ComputerTerminal extends Ground {
         for (GameMapFactory mapFactory : travelMapFactories) {
             if (location.map() != mapFactory.getMap()){
                 Location newLocation = mapFactory.getMap().at(mapFactory.getTravelXLocation(), mapFactory.getTravelYLocation());
-                if (!newLocation.containsAnActor()) {
-                    actions.add(new MoveActorAction(newLocation, mapFactory.getMapName()));
-                }
+                actions.add(new TravelAction(newLocation, mapFactory.getMapName()));
             }
         }
         return actions;
