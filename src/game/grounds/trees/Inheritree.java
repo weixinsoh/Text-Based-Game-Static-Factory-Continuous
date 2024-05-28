@@ -12,6 +12,9 @@ import game.plantactions.PlantAction;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * Abstract class Inheritree that represents a tree
+ */
 public abstract class Inheritree extends Ground {
     private Map<Integer, PlantAction> plantActions = new TreeMap<>();
 

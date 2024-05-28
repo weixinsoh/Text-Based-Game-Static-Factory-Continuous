@@ -1,6 +1,10 @@
 package game;
 import java.util.Random;
 
+
+/**
+ * Class representing Utility functions such as generating a random Integer
+ */
 public class Utility {
     /**
      * This function is used to generate random integer in a given range.
