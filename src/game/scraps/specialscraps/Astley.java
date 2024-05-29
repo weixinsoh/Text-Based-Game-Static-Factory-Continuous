@@ -11,6 +11,10 @@ import game.actions.ListenAction;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class representing an AI device, Astley that can be purchased by the computer terminal and can monologue.
+ *
+ */
 public class Astley extends Item implements Purchasable, Monologuer {
 
     private static final int CREDIT = 50;
@@ -23,10 +27,22 @@ public class Astley extends Item implements Purchasable, Monologuer {
 
     private int count = 0;
 
+    /**
+     * Constructor of Astley class.
+     *
+     */
     public Astley() {
         super("Astley", 'z', true);
     }
 
+    /**
+     * Count the passage of carrying time and handle subscription.
+     * Overrides Item.tick(Location currentLocation, Actor actor)
+     *
+     * @see Item#tick(Location currentLocation, Actor actor)
+     * @param currentLocation The location of the actor carrying this Item.
+     * @param actor The actor carrying this Item.
+     */
     @Override
     public void tick(Location currentLocation, Actor actor) {
         Display display = new Display();
@@ -43,6 +59,15 @@ public class Astley extends Item implements Purchasable, Monologuer {
         }
     }
 
+    /**
+     *
+     * Allow the actor to listen the monologue of the device.
+     * Overrides Item.allowableActions(Actor)
+     *
+     * @see Item#allowableActions(Actor)
+     * @param owner the actor that owns the item
+     * @return a list of actions that can be performed on the
+     */
     @Override
     public ActionList allowableActions(Actor owner){
         ActionList actions = new ActionList();
@@ -51,6 +76,14 @@ public class Astley extends Item implements Purchasable, Monologuer {
         return actions;
     }
 
+    /**
+     * Returning a list of monologue options that can be performed by Astley
+     * Overrides Monologuer.allowableMonologues(Actor)
+     *
+     * @see Monologuer#allowableMonologues(Actor)
+     * @param owner The actor who listen to the monologuer.
+     * @return a list of string containing available monologue options.
+     */
     @Override
     public List<String> allowableMonologues(Actor owner){
         List<String> monologues = new ArrayList<>();
@@ -66,6 +99,14 @@ public class Astley extends Item implements Purchasable, Monologuer {
         return monologues;
     }
 
+    /**
+     * Purchase an Astley with a certain credit and add it to actor's item inventory
+     * Overrides PurchaseCapable.purchase(Actor)
+     *
+     * @see Purchasable#purchase(Actor)
+     * @param actor The actor who purchases Astley.
+     * @return a string representing the actor purchases the Astley with a certain credit.
+     */
     @Override
     public String purchase(Actor actor) {
         isSubscribed = true;
@@ -73,11 +114,20 @@ public class Astley extends Item implements Purchasable, Monologuer {
         return String.format("%s successfully purchased %s for %d credits.", actor, this, CREDIT);
     }
 
+    /**
+     * Retrieve the actual credits needed when purchasing the item.
+     *
+     * @return the amount of actual credits
+     */
     @Override
     public int getActualCredit() {
         return CREDIT;
     }
 
+    /**
+     * Returns a string representation of Astley.
+     * @return a string representation of Astley
+     */
     @Override
     public String toString(){
         return "Astley, an AI device";
