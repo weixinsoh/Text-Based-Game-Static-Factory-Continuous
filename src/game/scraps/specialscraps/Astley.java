@@ -33,6 +33,7 @@ public class Astley extends Item implements Purchasable, Monologuer {
         count++;
         if (this.count % TICKS_TO_PAY_SUBSCRIPTION == 0) {
             if (actor.getBalance() >= CREDIT_TO_PAY_SUBSCRIPTION){
+                isSubscribed = true;
                 actor.deductBalance(CREDIT_TO_PAY_SUBSCRIPTION);
                 display.println("Subscription payment received!");
             } else {
@@ -79,6 +80,6 @@ public class Astley extends Item implements Purchasable, Monologuer {
 
     @Override
     public String toString(){
-        return "Astley, an AI device.";
+        return "Astley, an AI device";
     }
 }
