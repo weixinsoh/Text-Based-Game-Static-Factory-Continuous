@@ -65,12 +65,9 @@ public class BigFruit extends Item implements Consumable, Sellable {
     }
 
     @Override
-    public int getCreditForSale() {
-        return 30;
-    }
-
-    @Override
-    public Item soldBy() {
-        return this;
+    public String sell(Actor otherActor) {
+        otherActor.addBalance(30);
+        otherActor.removeItemFromInventory(this);
+        return otherActor.toString() +  " successfully sold Large Fruit for 30 credits.";
     }
 }
