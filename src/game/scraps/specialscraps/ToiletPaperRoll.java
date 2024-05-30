@@ -1,13 +1,19 @@
 package game.scraps.specialscraps;
 
+import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
 import edu.monash.fit2099.engine.items.Item;
+import edu.monash.fit2099.engine.positions.Location;
+import game.actions.SellAction;
+import game.capabilities.Status;
+import game.scraps.Sellable;
 
 /**
  * Class representing toilet paper roll that can be purchased by the computer terminal.
  *
  */
-public class ToiletPaperRoll extends Item implements Purchasable {
+public class ToiletPaperRoll extends Item implements Purchasable, Sellable {
 
     private static final int CREDIT = 5;
 
@@ -50,5 +56,28 @@ public class ToiletPaperRoll extends Item implements Purchasable {
     public String purchase(Actor actor) {
         actor.addItemToInventory(this);
         return String.format("%s successfully purchased %s for %d credits.", actor, this, getActualCredit());
+    }
+
+    @Override
+    public ActionList allowableActions(Actor otherActor, Location location){
+        ActionList actions = new ActionList();
+        if(otherActor.hasCapability(Status.BUYER)){
+            actions.add(new SellAction(this));
+        }
+        return actions;
+    }
+
+
+    @Override
+    public String sell(Actor otherActor) {
+        if (Math.random() <= 0.5){
+            otherActor.addBalance(1);   //50% chance of adding 1 credit
+            otherActor.removeItemFromInventory(this);
+            return otherActor.toString() +  " successfully sold Toilet Paper Roll for 1 credit.";
+        } else {
+            otherActor.hurt(otherActor.getAttribute(BaseActorAttributes.HEALTH));
+            otherActor.removeItemFromInventory(this);
+            return "The humanoid figure attacked the player"; //PLACEHOLDER TEXT
+        }
     }
 }

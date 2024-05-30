@@ -2,6 +2,7 @@ package game.actors;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
+import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
 import edu.monash.fit2099.engine.displays.Display;
@@ -45,6 +46,12 @@ public class Player extends Actor {
      */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
+
+        if(this.getAttribute(BaseActorAttributes.HEALTH) <= 0){
+            this.unconscious(map);
+            return new DoNothingAction();
+        }
+
         display.println("Intern\nHP: " + this.getAttribute(BaseActorAttributes.HEALTH)
                 + "/" + this.getAttributeMaximum(BaseActorAttributes.HEALTH)
                 + "\nBalance: " + this.getBalance() );
@@ -82,8 +89,12 @@ public class Player extends Actor {
      */
     @Override
     public String unconscious(Actor actor, GameMap map) {
-        map.removeActor(this);
+        super.unconscious(actor, map);
         return FancyMessage.YOU_ARE_FIRED;
     }
 
+    @Override
+    public String unconscious(GameMap map) {
+        return super.unconscious(map);
+    }
 }

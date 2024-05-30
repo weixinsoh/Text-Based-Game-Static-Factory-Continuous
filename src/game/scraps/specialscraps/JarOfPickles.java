@@ -4,13 +4,17 @@ package game.scraps.specialscraps;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
+import edu.monash.fit2099.engine.positions.Location;
 import game.actions.ConsumeAction;
+import game.actions.SellAction;
+import game.capabilities.Status;
+import game.scraps.Sellable;
 
 /**
  * Class that represents a Jar Of Pickles that can be consumed to randomly hurt or heal the player
  *
  */
-public class JarOfPickles extends Item implements Consumable {
+public class JarOfPickles extends Item implements Consumable, Sellable {
 
     private static final int JAR_OF_PICKLES_HEALTH_AFFECTED = 1;
 
@@ -57,5 +61,27 @@ public class JarOfPickles extends Item implements Consumable {
         ActionList actions = new ActionList();
         actions.add(new ConsumeAction(this));
         return actions;
+    }
+
+    @Override
+    public ActionList allowableActions(Actor otherActor, Location location){
+        ActionList actions = new ActionList();
+        if(otherActor.hasCapability(Status.BUYER)){
+            actions.add(new SellAction(this));
+        }
+        return actions;
+    }
+
+    @Override
+    public String sell(Actor otherActor) {
+        if (Math.random() <= 0.5){
+            otherActor.addBalance(25);
+            otherActor.removeItemFromInventory(this);
+            return otherActor.toString() +  " successfully sold Jar of Pickles for 25 credits.";
+        } else {
+            otherActor.addBalance(50);
+            otherActor.removeItemFromInventory(this);
+            return otherActor.toString() +  " successfully sold Jar of Pickles for 50 credits.";
+        }
     }
 }
