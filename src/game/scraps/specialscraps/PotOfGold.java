@@ -62,17 +62,16 @@ public class PotOfGold extends Item implements Consumable, Sellable {
         return actions;
     }
 
-    @Override
-    public int getCreditForSale() {
-        if (Math.random() <= 0.25){
-            return 0;
-        } else {
-            return 500;
-        }
-    }
 
     @Override
-    public Item soldBy() {
-        return this;
+    public String sell(Actor otherActor) {
+        if (Math.random() <= 0.25){
+            otherActor.removeItemFromInventory(this);
+            return otherActor.toString() +  " successfully sold Pot of Gold for 0 credits.";    //Placeholder message
+        } else {
+            otherActor.addBalance(500);
+            otherActor.removeItemFromInventory(this);
+            return otherActor.toString() +  " successfully sold Pot of Gold for 500 credits.";
+        }
     }
 }
