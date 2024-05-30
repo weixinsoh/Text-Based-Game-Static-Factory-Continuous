@@ -31,16 +31,15 @@ public class MetalSheet extends Item implements Sellable{
     }
 
     @Override
-    public int getCreditForSale() {
+    public String sell(Actor otherActor) {
         if (Math.random() <= 0.6){
-            return 10;
+            otherActor.addBalance(10);
+            otherActor.removeItemFromInventory(this);
+            return otherActor.toString() +  " successfully sold Metal Sheet for 10 credits.";
         } else {
-            return 20;
+            otherActor.addBalance(20);
+            otherActor.removeItemFromInventory(this);
+            return otherActor.toString() +  " successfully sold Metal Sheet for 20 credits.";
         }
-    }
-
-    @Override
-    public Item soldBy() {
-        return this;
     }
 }
