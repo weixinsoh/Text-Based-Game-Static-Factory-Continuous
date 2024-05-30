@@ -14,10 +14,7 @@ public class SellAction extends Action {
     }
     @Override
     public String execute(Actor actor, GameMap map) {
-        int saleCredits = sellableItem.getCreditForSale();
-        actor.addBalance(saleCredits);
-        actor.removeItemFromInventory(sellableItem.soldBy());
-        return actor.toString() +  " successfully sold " + sellableItem + " for " + saleCredits + " credits.";
+        return sellableItem.sell(actor);
     }
 
     @Override
