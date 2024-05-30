@@ -46,12 +46,9 @@ public class MetalPipe extends WeaponItem implements Sellable {
     }
 
     @Override
-    public int getCreditForSale() {
-        return 35;
-    }
-
-    @Override
-    public Item soldBy() {
-        return this;
+    public String sell(Actor otherActor) {
+        otherActor.addBalance(35);
+        otherActor.removeItemFromInventory(this);
+        return otherActor.toString() +  " successfully sold Metal Pipe for 35 credits.";
     }
 }
