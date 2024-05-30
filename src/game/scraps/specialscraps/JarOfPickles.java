@@ -73,16 +73,15 @@ public class JarOfPickles extends Item implements Consumable, Sellable {
     }
 
     @Override
-    public int getCreditForSale() {
+    public String sell(Actor otherActor) {
         if (Math.random() <= 0.5){
-            return 50;
+            otherActor.addBalance(25);
+            otherActor.removeItemFromInventory(this);
+            return otherActor.toString() +  " successfully sold Jar of Pickles for 25 credits.";
         } else {
-            return 25;
+            otherActor.addBalance(50);
+            otherActor.removeItemFromInventory(this);
+            return otherActor.toString() +  " successfully sold Jar of Pickles for 50 credits.";
         }
-    }
-
-    @Override
-    public Item soldBy() {
-        return this;
     }
 }
