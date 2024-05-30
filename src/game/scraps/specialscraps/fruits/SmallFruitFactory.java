@@ -2,13 +2,16 @@ package game.scraps.specialscraps.fruits;
 
 import edu.monash.fit2099.engine.positions.Location;
 
+/**
+ * Class that represents a Small Fruit Factory used to create new small fruit instances in the map
+ */
 public class SmallFruitFactory implements FruitFactory{
     private static final double SMALL_FRUIT_DROP_PROBABILITY = 0.3;
 
     /**
-     * The method that spawns a new Big Fruit with a specific probability
+     * The method that spawns a new Small Fruit with a specific probability
      *
-     * @param location Location that the Big Fruit can be dropped
+     * @param location Location that the Small Fruit can be dropped
      */
     @Override
     public boolean drop(Location location) {
