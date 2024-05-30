@@ -6,6 +6,7 @@ import java.util.List;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.World;
+import game.actors.HumanoidFigure;
 import game.actors.Player;
 import game.grounds.*;
 import game.grounds.trees.SproutTree;
@@ -96,6 +97,9 @@ public class Application {
         world.addGameMap(refactorioFactory.getMap());
         world.addGameMap(factoryParkingLotFactory.getMap());
 
+        //Insert HumanoidFigure into Parking Lot
+        HumanoidFigure humanoidFigure = new HumanoidFigure();
+        factoryParkingLotFactory.getMap().at(2, 3).addActor(humanoidFigure);
 
         // Insert computer terminal into each map
         ComputerTerminal computerTerminal = new ComputerTerminal();
