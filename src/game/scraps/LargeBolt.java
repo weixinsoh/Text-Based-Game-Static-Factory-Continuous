@@ -2,6 +2,7 @@ package game.scraps;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actions.SellAction;
@@ -31,12 +32,9 @@ public class LargeBolt extends Item implements Sellable{
     }
 
     @Override
-    public int getCreditForSale() {
-        return 25;
-    }
-
-    @Override
-    public Item soldBy() {
-        return this;
+    public String sell(Actor otherActor) {
+        otherActor.addBalance(25);
+        otherActor.removeItemFromInventory(this);
+        return otherActor.toString() +  " successfully sold Large Bolt for 25 credits.";
     }
 }
