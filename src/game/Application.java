@@ -97,9 +97,6 @@ public class Application {
         world.addGameMap(refactorioFactory.getMap());
         world.addGameMap(factoryParkingLotFactory.getMap());
 
-        //Insert HumanoidFigure into Parking Lot
-        HumanoidFigure humanoidFigure = new HumanoidFigure();
-        factoryParkingLotFactory.getMap().at(2, 3).addActor(humanoidFigure);
 
         // Insert computer terminal into each map
         ComputerTerminal computerTerminal = new ComputerTerminal();
@@ -110,6 +107,11 @@ public class Application {
         computerTerminal.addTravelMap(polymorphiaFactory);
         computerTerminal.addTravelMap(refactorioFactory);
         computerTerminal.addTravelMap(factoryParkingLotFactory);
+
+
+        //Insert HumanoidFigure into Parking Lot
+        HumanoidFigure humanoidFigure = new HumanoidFigure();
+        factoryParkingLotFactory.getMap().at(2, 3).addActor(humanoidFigure);
 
 
         // Insert scraps
@@ -139,10 +141,12 @@ public class Application {
         Crater suspiciousAstronautCrater = new Crater(new SuspiciousAstronautSpawner());
         polymorphiaFactory.getMap().at(16, 12).setGround(suspiciousAstronautCrater);
 
+        // Add player
         Player player = new Player("Intern", '@', 4);
         world.addPlayer(player, polymorphiaFactory.getMap().at(15, 6));
 
         player.addBalance(100000);
+
 
         // Display game title
         for (String line : FancyMessage.TITLE.split("\n")) {

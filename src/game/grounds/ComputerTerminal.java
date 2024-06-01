@@ -40,12 +40,17 @@ public class ComputerTerminal extends Ground {
         return purchasedItems;
     }
 
+    /**
+     * Add the travelable map factory to list stored in the computer terminal.
+     *
+     * @param mapFactory a GameMapFactory that can be travel to.
+     */
     public void addTravelMap(GameMapFactory mapFactory) {
         travelMapFactories.add(mapFactory);
     }
 
     /**
-     * Allow actor to perform a purchase action.
+     * Allow actor to perform actions when interacts with the computer terminal.
      *
      * @param actor     the actor who going to purchase item in the computer terminal
      * @param location  the current Location
