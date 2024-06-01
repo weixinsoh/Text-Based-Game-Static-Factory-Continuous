@@ -2,7 +2,6 @@ package game.scraps.specialscraps;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
@@ -64,6 +63,15 @@ public class ToiletPaperRoll extends Item implements Purchasable, Sellable {
         return String.format("%s successfully purchased %s for %d credits.", actor, this, getActualCredit());
     }
 
+    /**
+     * Allows the actor with a toilet paper roll to sell the toilet paper roll to another actor
+     * if that actor has the BUYER status
+     * Overrides Item.allowableActions(Actor otherActor, Location location)
+     *
+     * @param otherActor the other actor that the actor with toilet paper roll is next to
+     * @param location the location of the other actor
+     * @return a list of allowable actions that can be taken
+     */
     @Override
     public ActionList allowableActions(Actor otherActor, Location location){
         ActionList actions = new ActionList();

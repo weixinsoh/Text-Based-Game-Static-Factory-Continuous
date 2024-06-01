@@ -5,7 +5,6 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
-import game.actions.AttackAction;
 import game.actions.SellAction;
 import game.capabilities.Status;
 
@@ -29,6 +28,15 @@ public class MetalSheet extends Item implements Sellable{
         super("metal sheet", '%', true);
     }
 
+    /**
+     * Allows the actor with metal sheet to sell the metal sheet to another actor
+     * if that actor has the BUYER status
+     * Overrides Item.allowableActions(Actor otherActor, Location location)
+     *
+     * @param otherActor the other actor that the actor with metal sheet is next to
+     * @param location the location of the other actor
+     * @return a list of allowable actions that can be taken
+     */
     @Override
     public ActionList allowableActions(Actor otherActor, Location location){
         ActionList actions = new ActionList();

@@ -24,6 +24,16 @@ public class LargeBolt extends Item implements Sellable{
     public LargeBolt() {
         super("large bolt", '+', true);
     }
+
+    /**
+     * Allows the actor with large bolt to sell the large bolt to another actor
+     * if that actor has the BUYER status
+     * Overrides Item.allowableActions(Actor otherActor, Location location)
+     *
+     * @param otherActor the other actor that the actor with large bolt is next to
+     * @param location the location of the other actor
+     * @return a list of allowable actions that can be taken
+     */
     @Override
     public ActionList allowableActions(Actor otherActor, Location location){
         ActionList actions = new ActionList();

@@ -57,6 +57,15 @@ public class BigFruit extends Item implements Consumable, Sellable {
         return actions;
     }
 
+    /**
+     * Allows the actor with big fruit to sell the big fruit to another actor
+     * if that actor has the BUYER status
+     * Overrides Item.allowableActions(Actor otherActor, Location location)
+     *
+     * @param otherActor the other actor that the actor with big fruit is next to
+     * @param location the location of the other actor
+     * @return a list of allowable actions that can be taken
+     */
     @Override
     public ActionList allowableActions(Actor otherActor, Location location){
         ActionList actions = new ActionList();

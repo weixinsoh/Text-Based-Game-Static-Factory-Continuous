@@ -83,6 +83,4 @@ public class EnergyDrink extends Item implements Consumable, Purchasable {
         actor.addItemToInventory(this);
         return String.format("%s successfully purchased %s for %d credits.", actor, this, getActualCredit());
     }
-
-
 }

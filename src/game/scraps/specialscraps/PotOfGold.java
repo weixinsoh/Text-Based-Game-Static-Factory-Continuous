@@ -34,7 +34,7 @@ public class PotOfGold extends Item implements Consumable, Sellable {
      * Removes the Pot of Gold from the actor's inventory
      * Overrides Consumable.consumedBy(Actor)
      *
-     * @see Consumable#consumedBy(Actor)
+     * @see Consumable#consumedBy(Actor, GameMap)
      * @param actor the actor who consumes the Pot of Gold
      * @return a string representing the actor has consumed the Pot of Gold and the amount the Pot of Gold adds to the actor's balance
      */
@@ -58,6 +58,16 @@ public class PotOfGold extends Item implements Consumable, Sellable {
         actions.add(new ConsumeAction(this));
         return actions;
     }
+
+    /**
+     * Allows the actor with pot of gold to sell the pot of gold to another actor
+     * if that actor has the BUYER status
+     * Overrides Item.allowableActions(Actor otherActor, Location location)
+     *
+     * @param otherActor the other actor that the actor with pot of gold is next to
+     * @param location the location of the other actor
+     * @return a list of allowable actions that can be taken
+     */
     @Override
     public ActionList allowableActions(Actor otherActor, Location location){
         ActionList actions = new ActionList();
