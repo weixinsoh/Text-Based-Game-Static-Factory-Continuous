@@ -4,6 +4,7 @@ import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
 import edu.monash.fit2099.engine.items.Item;
+import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actions.SellAction;
 import game.capabilities.Status;
@@ -15,13 +16,18 @@ import game.scraps.Sellable;
  */
 public class ToiletPaperRoll extends Item implements Purchasable, Sellable {
 
-    private static final int CREDIT = 5;
+    private static final int PURCHASE_CREDIT = 5;
 
-    private static final int SPECIAL_CASE_CREDIT = 1;
+    private static final int PURCHASE_SPECIAL_CASE_CREDIT = 1;
 
-    private static final double SPECIAL_CASE_CHANCE = 0.75;
+    private static final double PURCHASE_SPECIAL_CASE_CHANCE = 0.75;
 
-    private final int actual_credit;
+    private final int actualPurchaseCredit;
+
+    private static final double SELL_SPECIAL_CASE_CHANCE = 0.5;
+
+    private static final int SELL_CREDIT = 5;
+
 
     /**
      * Constructor of ToiletPaperRoll class.
@@ -29,10 +35,10 @@ public class ToiletPaperRoll extends Item implements Purchasable, Sellable {
      */
     public ToiletPaperRoll() {
         super("Toilet Paper Roll", 's', true);
-        if (Math.random() <= SPECIAL_CASE_CHANCE)
-            actual_credit = SPECIAL_CASE_CREDIT;
+        if (Math.random() <= PURCHASE_SPECIAL_CASE_CHANCE)
+            actualPurchaseCredit = PURCHASE_SPECIAL_CASE_CREDIT;
         else
-            actual_credit = CREDIT;
+            actualPurchaseCredit = PURCHASE_CREDIT;
     }
 
     /**
@@ -41,7 +47,7 @@ public class ToiletPaperRoll extends Item implements Purchasable, Sellable {
      * @return the amount of actual credits
      */
     public int getActualCredit(){
-        return actual_credit;
+        return actualPurchaseCredit;
     }
 
     /**
@@ -69,15 +75,13 @@ public class ToiletPaperRoll extends Item implements Purchasable, Sellable {
 
 
     @Override
-    public String sell(Actor otherActor) {
-        if (Math.random() <= 0.5){
-            otherActor.addBalance(1);   //50% chance of adding 1 credit
-            otherActor.removeItemFromInventory(this);
-            return otherActor.toString() +  " successfully sold Toilet Paper Roll for 1 credit.";
+    public String sell(Actor otherActor, GameMap map) {
+        otherActor.removeItemFromInventory(this);
+        if (Math.random() <= SELL_SPECIAL_CASE_CHANCE){
+            return otherActor.unconscious(map);
         } else {
-            otherActor.hurt(otherActor.getAttribute(BaseActorAttributes.HEALTH));
-            otherActor.removeItemFromInventory(this);
-            return "The humanoid figure attacked the player"; //PLACEHOLDER TEXT
+            otherActor.addBalance(SELL_CREDIT);   //50% chance of adding 1 credit
+            return otherActor +  " successfully sold Toilet Paper Roll for 1 credit.";
         }
     }
 }

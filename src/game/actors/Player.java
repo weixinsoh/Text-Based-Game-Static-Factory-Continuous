@@ -46,12 +46,6 @@ public class Player extends Actor {
      */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-
-        if(this.getAttribute(BaseActorAttributes.HEALTH) <= 0){
-            this.unconscious(map);
-            return new DoNothingAction();
-        }
-
         display.println("Intern\nHP: " + this.getAttribute(BaseActorAttributes.HEALTH)
                 + "/" + this.getAttributeMaximum(BaseActorAttributes.HEALTH)
                 + "\nBalance: " + this.getBalance() );
@@ -91,10 +85,5 @@ public class Player extends Actor {
     public String unconscious(Actor actor, GameMap map) {
         super.unconscious(actor, map);
         return FancyMessage.YOU_ARE_FIRED;
-    }
-
-    @Override
-    public String unconscious(GameMap map) {
-        return super.unconscious(map);
     }
 }

@@ -3,6 +3,7 @@ package game.scraps.specialscraps;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
+import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actions.AttackAction;
@@ -15,6 +16,7 @@ import game.scraps.Sellable;
  *
  */
 public class MetalPipe extends WeaponItem implements Sellable {
+    private static final int SELL_CREDIT = 35;
 
     /**
      * Constructor of MetalPipe class.
@@ -46,9 +48,9 @@ public class MetalPipe extends WeaponItem implements Sellable {
     }
 
     @Override
-    public String sell(Actor otherActor) {
-        otherActor.addBalance(35);
+    public String sell(Actor otherActor, GameMap map) {
+        otherActor.addBalance(SELL_CREDIT);
         otherActor.removeItemFromInventory(this);
-        return otherActor.toString() +  " successfully sold Metal Pipe for 35 credits.";
+        return String.format("%s successfully sold Metal Pipe for %d credits.", otherActor, SELL_CREDIT);
     }
 }

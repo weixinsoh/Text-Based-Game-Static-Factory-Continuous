@@ -3,6 +3,7 @@ package game.scraps.specialscraps;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
+import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actions.ConsumeAction;
 import game.actions.SellAction;
@@ -16,6 +17,10 @@ import game.scraps.Sellable;
 public class PotOfGold extends Item implements Consumable, Sellable {
 
     private static final int POT_OF_GOLD_BALANCE = 10;
+
+    private static final double SELL_SPECIAL_CASE_CHANCE = 0.25;
+
+    private static final int SELL_CREDIT = 500;
 
     /**
      * Constructor of the PotOfGold class.
@@ -64,14 +69,13 @@ public class PotOfGold extends Item implements Consumable, Sellable {
 
 
     @Override
-    public String sell(Actor otherActor) {
-        if (Math.random() <= 0.25){
-            otherActor.removeItemFromInventory(this);
-            return otherActor.toString() +  " successfully sold Pot of Gold for 0 credits.";    //Placeholder message
+    public String sell(Actor otherActor, GameMap map) {
+        otherActor.removeItemFromInventory(this);
+        if (Math.random() <= SELL_SPECIAL_CASE_CHANCE){
+            return String.format("%s successfully sold Pot of Gold without earning any credit.", otherActor);
         } else {
-            otherActor.addBalance(500);
-            otherActor.removeItemFromInventory(this);
-            return otherActor.toString() +  " successfully sold Pot of Gold for 500 credits.";
+            otherActor.addBalance(SELL_CREDIT);
+            return String.format("%s successfully sold Pot of Gold for %d credits.", otherActor, SELL_CREDIT);
         }
     }
 }

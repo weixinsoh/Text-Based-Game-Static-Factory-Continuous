@@ -4,6 +4,7 @@ package game.scraps.specialscraps;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
+import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actions.ConsumeAction;
 import game.actions.SellAction;
@@ -19,6 +20,12 @@ public class JarOfPickles extends Item implements Consumable, Sellable {
     private static final int JAR_OF_PICKLES_HEALTH_AFFECTED = 1;
 
     private static final double EXPIRED_PROBABILITY = 0.5;
+
+    private static final double SELL_SPECIAL_CASE_CHANCE = 0.5;
+
+    private static final int SELL_SPECIAL_CASE_CREDIT = 50;
+
+    private static final int SELL_CREDIT = 25;
 
     /**
      * Constructor of the Jar Of Pickles class.
@@ -73,15 +80,14 @@ public class JarOfPickles extends Item implements Consumable, Sellable {
     }
 
     @Override
-    public String sell(Actor otherActor) {
-        if (Math.random() <= 0.5){
-            otherActor.addBalance(25);
-            otherActor.removeItemFromInventory(this);
-            return otherActor.toString() +  " successfully sold Jar of Pickles for 25 credits.";
+    public String sell(Actor otherActor, GameMap map) {
+        otherActor.removeItemFromInventory(this);
+        if (Math.random() <= SELL_SPECIAL_CASE_CHANCE){
+            otherActor.addBalance(SELL_SPECIAL_CASE_CREDIT);
+            return String.format("%s successfully sold Jar of Pickles for %d credits.", otherActor, SELL_SPECIAL_CASE_CREDIT);
         } else {
-            otherActor.addBalance(50);
-            otherActor.removeItemFromInventory(this);
-            return otherActor.toString() +  " successfully sold Jar of Pickles for 50 credits.";
+            otherActor.addBalance(SELL_CREDIT);
+            return String.format("%s successfully sold Jar of Pickles for %d credits.", otherActor, SELL_CREDIT);
         }
     }
 }

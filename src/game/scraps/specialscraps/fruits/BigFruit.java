@@ -3,6 +3,7 @@ package game.scraps.specialscraps.fruits;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
+import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actions.ConsumeAction;
 import game.actions.SellAction;
@@ -17,13 +18,14 @@ import game.scraps.specialscraps.Consumable;
 public class BigFruit extends Item implements Consumable, Sellable {
 
     private static final int HEAL_POINTS = 2;
+    private static final int SELL_CREDIT = 30;
 
     /**
      * Constructor of the BigFruit class.
      *
      */
     public BigFruit() {
-        super("big fruit", 'O', true);
+        super("large fruit", 'O', true);
     }
 
     /**
@@ -65,9 +67,9 @@ public class BigFruit extends Item implements Consumable, Sellable {
     }
 
     @Override
-    public String sell(Actor otherActor) {
-        otherActor.addBalance(30);
+    public String sell(Actor otherActor, GameMap map) {
+        otherActor.addBalance(SELL_CREDIT);
         otherActor.removeItemFromInventory(this);
-        return otherActor.toString() +  " successfully sold Large Fruit for 30 credits.";
+        return String.format("%s successfully sold Large Fruit for %d credits.", otherActor, SELL_CREDIT);
     }
 }

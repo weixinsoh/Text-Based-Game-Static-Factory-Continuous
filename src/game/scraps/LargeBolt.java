@@ -4,6 +4,7 @@ import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
 import edu.monash.fit2099.engine.items.Item;
+import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actions.SellAction;
 import game.capabilities.Status;
@@ -13,6 +14,9 @@ import game.capabilities.Status;
  *
  */
 public class LargeBolt extends Item implements Sellable{
+
+    private final static int SELL_CREDIT = 25;
+
     /**
      * Constructor of LargeBolt class.
      *
@@ -32,9 +36,9 @@ public class LargeBolt extends Item implements Sellable{
     }
 
     @Override
-    public String sell(Actor otherActor) {
-        otherActor.addBalance(25);
+    public String sell(Actor otherActor, GameMap map) {
+        otherActor.addBalance(SELL_CREDIT);
         otherActor.removeItemFromInventory(this);
-        return otherActor.toString() +  " successfully sold Large Bolt for 25 credits.";
+        return String.format("%s successfully sold Large Bolt for %d credits.", otherActor, SELL_CREDIT);
     }
 }

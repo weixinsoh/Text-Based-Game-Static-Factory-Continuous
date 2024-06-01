@@ -14,7 +14,7 @@ public class SellAction extends Action {
     }
     @Override
     public String execute(Actor actor, GameMap map) {
-        return sellableItem.sell(actor);
+        return sellableItem.sell(actor, map);
     }
 
     @Override
