@@ -23,7 +23,6 @@ public class ConsumeAction extends Action {
 
     /**
      * Allow the Actor to consume something.
-     *
      * Overrides Action.execute(Actor, GameMap)
      *
      * @see Action#execute(Actor, GameMap)

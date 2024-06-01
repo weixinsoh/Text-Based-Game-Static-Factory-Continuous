@@ -2,7 +2,6 @@ package game.actors;
 
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
-import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
 import edu.monash.fit2099.engine.displays.Display;
@@ -60,7 +59,6 @@ public class Player extends Actor {
 
     /**
      * Return the intrinsic weapon of the player.
-     *
      * Overrides Actor.getIntrinsicWeapon()
      *
      * @see Actor#getIntrinsicWeapon()
@@ -73,7 +71,6 @@ public class Player extends Actor {
 
     /**
      * Method that can be executed when the actor is unconscious due to the action of another actor
-     *
      * Overrides Actor.unconscious(GameMap)
      *
      * @see Actor#unconscious(GameMap)

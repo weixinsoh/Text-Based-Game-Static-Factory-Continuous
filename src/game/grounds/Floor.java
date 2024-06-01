@@ -22,7 +22,6 @@ public class Floor extends Ground {
 
     /**
      * Return true if the actor is allowed to enter the spaceship.
-     *
      * Overrides Ground.canActorEnter(Actor actor)
      *
      * @see Ground#canActorEnter(Actor)

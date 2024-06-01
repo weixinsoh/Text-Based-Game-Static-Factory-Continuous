@@ -12,28 +12,16 @@ import java.util.Random;
  */
 public class AttackAction extends Action {
 
-    /**
-     * The Actor that is to be attacked
-     */
     private Actor target;
 
-    /**
-     * The direction of incoming attack.
-     */
     private String direction;
 
-    /**
-     * Random number generator
-     */
     private Random rand = new Random();
 
-    /**
-     * Weapon used for the attack
-     */
     private Weapon weapon;
 
     /**
-     * Constructor.
+     * Constructor of a new AttackAction.
      *
      * @param target the Actor to attack
      * @param direction the direction where the attack should be performed (only used for display purposes)
@@ -58,7 +46,6 @@ public class AttackAction extends Action {
 
     /**
      * Allow the Actor to perform an attack on another actor.
-     *
      * Overrides Action.execute()
      *
      * @see Action#execute(Actor, GameMap)

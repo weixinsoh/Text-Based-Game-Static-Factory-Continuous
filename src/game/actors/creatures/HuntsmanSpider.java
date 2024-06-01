@@ -31,7 +31,6 @@ public class HuntsmanSpider extends Creature {
 
     /**
      * The huntsman spider can be attacked by any actor that has the HOSTILE_TO_ENEMY capability
-     *
      * Overrides Actor.allowableActions(Actor, String, GameMap)
      *
      * @see Actor#allowableActions(Actor, String, GameMap)

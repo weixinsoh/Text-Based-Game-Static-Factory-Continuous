@@ -11,15 +11,12 @@ import game.scraps.specialscraps.Purchasable;
  */
 public class PurchaseAction extends Action {
 
-    /**
-     * A purchasable object for purchase action to be performed on.
-     */
     private Purchasable purchasedItem;
 
     /**
      * Constructor of the PurchaseAction class.
      *
-     * @param purchasedItem object to be purchase.
+     * @param purchasedItem object to be purchased.
      */
     public PurchaseAction(Purchasable purchasedItem){
         this.purchasedItem = purchasedItem;
@@ -27,7 +24,6 @@ public class PurchaseAction extends Action {
 
     /**
      * Allow the Actor to purchase something if the actor has sufficient balance.
-     *
      * Overrides Action.execute(Actor, GameMap)
      *
      * @see Action#execute(Actor, GameMap)

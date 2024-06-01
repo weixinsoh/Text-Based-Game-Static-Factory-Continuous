@@ -18,6 +18,7 @@ public class ListenAction extends Action {
 
     /**
      * Constructor of the ListenAction class.
+     *
      * @param monologuer object to monologue
      */
     public ListenAction(Monologuer monologuer) {
@@ -26,7 +27,6 @@ public class ListenAction extends Action {
 
     /**
      * Allow the Actor to listen a monologue string.
-     *
      * Overrides Action.execute(Actor, GameMap)
      *
      * @see Action#execute(Actor, GameMap)

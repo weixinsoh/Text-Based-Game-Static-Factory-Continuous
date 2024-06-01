@@ -1,10 +1,4 @@
 package game.grounds.trees;
-
-import edu.monash.fit2099.engine.actions.Action;
-import edu.monash.fit2099.engine.actions.ActionList;
-import edu.monash.fit2099.engine.actors.Actor;
-import edu.monash.fit2099.engine.displays.Display;
-import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Ground;
 import edu.monash.fit2099.engine.positions.Location;
 import game.plantactions.PlantAction;
@@ -42,7 +36,7 @@ public abstract class Inheritree extends Ground {
      * At each turn, select a valid action to perform.
      * Overrides Actor.playTurn(ActionList, Action, GameMap, Display)
      *
-     * @see Actor#playTurn(ActionList, Action, GameMap, Display)
+     * @see Ground#tick(Location) 
      * @param location Location
      */
     @Override

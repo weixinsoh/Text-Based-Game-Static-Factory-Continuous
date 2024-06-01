@@ -5,17 +5,15 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.scraps.Sellable;
 /**
- * Class representing an the sell action.
+ * Class representing a sell action.
  *
  */
 public class SellAction extends Action {
-    /**
-     * A sellable object for the sell action to be performed on.
-     */
+
     private Sellable sellableItem;
 
     /**
-     * Constructor of the PurchaseAction class.
+     * Constructor of the SellAction class.
      *
      * @param sellableItem object to be sold.
      */
@@ -25,7 +23,6 @@ public class SellAction extends Action {
 
     /**
      * Allow the Actor to sell something if the appropriate item is in their inventory.
-     *
      * Overrides Action.execute(Actor, GameMap)
      *
      * @see Action#execute(Actor, GameMap)
@@ -39,7 +36,7 @@ public class SellAction extends Action {
     }
 
     /**
-     * Returns a description of this purchase action to display in the menu.
+     * Returns a description of this sell action to display in the menu.
      *
      * @param actor The actor performing the sell action.
      * @return a String, e.g. "Player sells Toilet Paper Roll. "

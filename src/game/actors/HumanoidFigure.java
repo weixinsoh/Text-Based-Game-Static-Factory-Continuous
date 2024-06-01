@@ -11,9 +11,9 @@ import game.capabilities.Status;
  * Class representing the humanoid figure that purchases items on behalf of the factory.
  */
 public class HumanoidFigure extends Actor {
-    /*
+
+    /**
      * Constructor of the HumanoidFigure class.
-     *
      */
     public HumanoidFigure() {
         super("Humanoid Figure", 'H', 0);

@@ -25,7 +25,6 @@ public class TravelAction extends Action {
 
     /**
      * Teleport the actor to the new location.
-     *
      * Overrides Action.execute(Actor, GameMap)
      *
      * @see Action#execute(Actor, GameMap)
