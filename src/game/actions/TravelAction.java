@@ -11,16 +11,16 @@ import edu.monash.fit2099.engine.positions.Location;
  */
 public class TravelAction extends Action {
     private Location location;
-    private String mapName;
+    private String direction;
 
     /**
      * Constructor of the TravelAction.
      * @param location the new location to teleport the actor to.
-     * @param mapName the map name of the new location.
+     * @param direction the direction of the new location (eg. to Polymorphia).
      */
-    public TravelAction(Location location, String mapName) {
+    public TravelAction(Location location, String direction) {
         this.location = location;
-        this.mapName = mapName;
+        this.direction = direction;
     }
 
     /**
@@ -36,7 +36,7 @@ public class TravelAction extends Action {
     @Override
     public String execute(Actor actor, GameMap map) {
         try {
-            new MoveActorAction(location, mapName).execute(actor, map);
+            new MoveActorAction(location, direction).execute(actor, map);
         } catch (IllegalArgumentException e) {
             return "Teleport failed";
         }
@@ -51,6 +51,6 @@ public class TravelAction extends Action {
      */
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " teleport to " + mapName;
+        return actor + " teleport " + direction;
     }
 }

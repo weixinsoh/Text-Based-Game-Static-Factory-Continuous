@@ -56,7 +56,7 @@ public class Theseus extends Item implements Purchasable{
         int x = Utility.generateRandomInt(location.map().getXRange().min(), location.map().getXRange().max());
         int y = Utility.generateRandomInt(location.map().getYRange().min(), location.map().getYRange().max());
         Location newLocation = location.map().at(x, y);
-        actions.add(new TravelAction(newLocation, "current map"));
+        actions.add(new TravelAction(newLocation, "with THESEUS"));
         return actions;
     }
 }

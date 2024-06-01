@@ -67,7 +67,7 @@ public class ComputerTerminal extends Ground {
         for (GameMapFactory mapFactory : travelMapFactories) {
             if (location.map() != mapFactory.getMap()){
                 Location newLocation = mapFactory.getMap().at(mapFactory.getTravelXLocation(), mapFactory.getTravelYLocation());
-                actions.add(new TravelAction(newLocation, mapFactory.getMapName()));
+                actions.add(new TravelAction(newLocation, "to " + mapFactory.getMapName()));
             }
         }
         return actions;
