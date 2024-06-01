@@ -3,6 +3,7 @@ package game.scraps.specialscraps;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
+import edu.monash.fit2099.engine.positions.GameMap;
 import game.actions.ConsumeAction;
 
 /**
@@ -58,12 +59,12 @@ public class EnergyDrink extends Item implements Consumable, Purchasable {
      * Heal the actor after consuming and removes the energy drink from the actor's inventory
      * Overrides Consumable.consumedBy(Actor)
      *
-     * @see Consumable#consumedBy(Actor)
+     * @see Consumable#consumedBy(Actor, GameMap)
      * @param actor the actor who consumed the healer.
      * @return a string representing the actor consumed the energy drink and effect of the energy drink heals.
      */
     @Override
-    public String consumedBy(Actor actor){
+    public String consumedBy(Actor actor, GameMap map){
         actor.heal(HIT_POINTS);
         actor.removeItemFromInventory(this);
         return String.format("%s drinks Energy Drink. %s feels energised.", actor, actor);

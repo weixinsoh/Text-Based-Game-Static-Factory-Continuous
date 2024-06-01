@@ -4,6 +4,7 @@ import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.attributes.ActorAttributeOperations;
 import edu.monash.fit2099.engine.actors.attributes.BaseActorAttributes;
 import edu.monash.fit2099.engine.items.Item;
+import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Ground;
 
 import edu.monash.fit2099.engine.actors.Actor;
@@ -31,11 +32,11 @@ public class Puddle extends Ground implements Consumable {
      * Increases the Actor's maximum health by 1
      * Overrides Consumable.consumedBy(Actor)
      *
-     * @see Consumable#consumedBy(Actor)
+     * @see Consumable#consumedBy(Actor, GameMap)
      * @param actor the actor who consumes the Puddle
      * @return a string representing the actor has consumed the Puddle and the amount of health the puddle increases the actor's maximum health
      */
-    public String consumedBy(Actor actor){
+    public String consumedBy(Actor actor, GameMap map){
         actor.modifyAttributeMaximum(BaseActorAttributes.HEALTH, ActorAttributeOperations.INCREASE, PUDDLE_HEALTH);
         return String.format("%s consumes %s and maximum health increase by %d points. ", actor, this, PUDDLE_HEALTH);
     }

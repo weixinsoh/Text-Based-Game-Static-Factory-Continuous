@@ -39,7 +39,7 @@ public class PotOfGold extends Item implements Consumable, Sellable {
      * @return a string representing the actor has consumed the Pot of Gold and the amount the Pot of Gold adds to the actor's balance
      */
     @Override
-    public String consumedBy(Actor actor) {
+    public String consumedBy(Actor actor, GameMap map) {
         actor.removeItemFromInventory(this);
         actor.addBalance(POT_OF_GOLD_BALANCE);
         return String.format("%s is placed into %s's wallet and the amount of gold increases by %d.", this, actor, POT_OF_GOLD_BALANCE);

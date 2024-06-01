@@ -32,12 +32,12 @@ public class BigFruit extends Item implements Consumable, Sellable {
      * Heal the actor after consuming and removes the fruit from the actor's inventory
      * Overrides Consumable.consumedBy(Actor)
      *
-     * @see Consumable#consumedBy(Actor)
+     * @see Consumable#consumedBy(Actor, GameMap)
      * @param actor the actor who consumes the Big Fruit
      * @return a string representing the actor has consumed the big fruit and the amount the big fruit has healed the actor
      */
     @Override
-    public String consumedBy(Actor actor) {
+    public String consumedBy(Actor actor, GameMap map) {
         actor.removeItemFromInventory(this);
         actor.heal(HEAL_POINTS);
         return String.format("%s consumed %s and %s heals %s by %d points. ", actor, this, this, actor, HEAL_POINTS);

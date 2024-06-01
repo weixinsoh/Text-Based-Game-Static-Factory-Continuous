@@ -40,18 +40,21 @@ public class JarOfPickles extends Item implements Consumable, Sellable {
      * Removes the Jar Of Pickles from the actor's inventory
      * Overrides Consumable.consumedBy(Actor)
      *
-     * @see Consumable#consumedBy(Actor)
+     * @see Consumable#consumedBy(Actor, GameMap)
      * @param actor the actor who consumes the Jar Of Pickles
      * @return a string representing the actor has consumed the Jar Of Pickles and the amount of health the Jar Of Pickles affected
      */
     @Override
-    public String consumedBy(Actor actor) {
+    public String consumedBy(Actor actor, GameMap map) {
         actor.removeItemFromInventory(this);
         if(Math.random() <= EXPIRED_PROBABILITY){
             actor.heal(JAR_OF_PICKLES_HEALTH_AFFECTED);
             return String.format("%s consumed %s and %s heals %s by %d points. ", actor, this, this, actor, JAR_OF_PICKLES_HEALTH_AFFECTED);
         } else {
             actor.hurt(JAR_OF_PICKLES_HEALTH_AFFECTED);
+            if (!actor.isConscious()){
+                actor.unconscious(map);
+            }
             return String.format("%s consumed %s and %s hurts %s by %d points. ", actor, this, this, actor, JAR_OF_PICKLES_HEALTH_AFFECTED);
         }
     }
