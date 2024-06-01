@@ -66,6 +66,14 @@ public class BigFruit extends Item implements Consumable, Sellable {
         return actions;
     }
 
+    /**
+     * Sell a big fruit with a certain credit and remove it from the actor's item inventory.
+     *
+     * @see Sellable#sell(Actor, GameMap)
+     * @param otherActor The actor who sold the big fruit.
+     * @param map The map the actor is on.
+     * @return a string representing the actor sold the big fruit with a certain credit.
+     */
     @Override
     public String sell(Actor otherActor, GameMap map) {
         otherActor.addBalance(SELL_CREDIT);

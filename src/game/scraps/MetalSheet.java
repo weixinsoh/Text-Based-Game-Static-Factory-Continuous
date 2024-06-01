@@ -38,6 +38,14 @@ public class MetalSheet extends Item implements Sellable{
         return actions;
     }
 
+    /**
+     * Sell a metal sheet with a certain credit (based on probability) and remove it from the actor's item inventory.
+     *
+     * @see Sellable#sell(Actor, GameMap)
+     * @param otherActor The actor who sold the metal sheet.
+     * @param map The map the actor is on.
+     * @return a string representing the actor sold the metal sheet with a certain credit.
+     */
     @Override
     public String sell(Actor otherActor, GameMap map) {
         otherActor.removeItemFromInventory(this);

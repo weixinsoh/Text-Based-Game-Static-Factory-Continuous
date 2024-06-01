@@ -47,6 +47,14 @@ public class MetalPipe extends WeaponItem implements Sellable {
         return actions;
     }
 
+    /**
+     * Sell a metal pipe with a certain credit and remove it from the actor's item inventory.
+     *
+     * @see Sellable#sell(Actor, GameMap)
+     * @param otherActor The actor who sold the metal pipe.
+     * @param map The map the actor is on.
+     * @return a string representing the actor sold the metal pipe with a certain credit.
+     */
     @Override
     public String sell(Actor otherActor, GameMap map) {
         otherActor.addBalance(SELL_CREDIT);

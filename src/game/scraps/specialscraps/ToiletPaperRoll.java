@@ -73,7 +73,14 @@ public class ToiletPaperRoll extends Item implements Purchasable, Sellable {
         return actions;
     }
 
-
+    /**
+     * Sell a toilet paper roll with a certain credit, with a chance that the actor will be killed instantly and remove it from the actor's item inventory.
+     *
+     * @see Sellable#sell(Actor, GameMap)
+     * @param otherActor The actor who sold the toilet paper roll.
+     * @param map The map the actor is on.
+     * @return a string representing the actor sold the toilet paper roll with a certain credit or that they have been killed (are unconscious).
+     */
     @Override
     public String sell(Actor otherActor, GameMap map) {
         otherActor.removeItemFromInventory(this);
