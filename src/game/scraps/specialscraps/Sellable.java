@@ -3,7 +3,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 
 /**
- * Interface representing sellable.
+ * Interface representing sellable item.
  *
  */
 public interface Sellable {
@@ -12,6 +12,7 @@ public interface Sellable {
      *
      * @param otherActor The actor who is attempting to sell an item.
      * @param map The map the actor is on.
+     * @return a string representing whether the actor sold the item with a certain credit.
      */
     String sell(Actor otherActor, GameMap map);
 }

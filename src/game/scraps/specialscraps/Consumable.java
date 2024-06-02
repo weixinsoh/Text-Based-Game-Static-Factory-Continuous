@@ -13,6 +13,7 @@ public interface Consumable {
      * Add the effect to the actor after consuming.
      *
      * @param actor The actor who consumed the consumable.
+     * @param map the map where the actor is located
      * @return a string representing the actor consumed the consumable and the effect.
      */
     String consumedBy(Actor actor, GameMap map);
