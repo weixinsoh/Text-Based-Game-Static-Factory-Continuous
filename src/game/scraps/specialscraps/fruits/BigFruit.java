@@ -8,7 +8,7 @@ import edu.monash.fit2099.engine.positions.Location;
 import game.actions.ConsumeAction;
 import game.actions.SellAction;
 import game.capabilities.Status;
-import game.scraps.Sellable;
+import game.scraps.specialscraps.Sellable;
 import game.scraps.specialscraps.Consumable;
 
 /**

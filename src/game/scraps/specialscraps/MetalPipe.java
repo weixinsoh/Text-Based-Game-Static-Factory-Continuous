@@ -8,7 +8,6 @@ import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actions.AttackAction;
 import game.actions.SellAction;
 import game.capabilities.Status;
-import game.scraps.Sellable;
 
 /**
  * Class representing a metal pipe.

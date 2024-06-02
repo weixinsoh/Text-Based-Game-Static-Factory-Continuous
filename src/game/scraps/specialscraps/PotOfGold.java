@@ -8,7 +8,6 @@ import edu.monash.fit2099.engine.positions.Location;
 import game.actions.ConsumeAction;
 import game.actions.SellAction;
 import game.capabilities.Status;
-import game.scraps.Sellable;
 
 /**
  * Class that represents a Pot of Gold that can be used by the intern to add 10 gold to the Intern's balance
