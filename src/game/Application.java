@@ -145,8 +145,6 @@ public class Application {
         Player player = new Player("Intern", '@', 4);
         world.addPlayer(player, polymorphiaFactory.getMap().at(15, 6));
 
-        player.addBalance(100000);
-
 
         // Display game title
         for (String line : FancyMessage.TITLE.split("\n")) {

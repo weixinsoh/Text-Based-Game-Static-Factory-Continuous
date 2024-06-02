@@ -4,5 +4,11 @@
 Contribution Log \
 https://docs.google.com/spreadsheets/d/14-lXn7awEWZ_wAXByLxSsSXT6dmqPnI2R6i5-k1RbOc/edit?usp=sharing
 
-Design Rationale \
+Design Rationale A2 \
 https://docs.google.com/document/d/1rlks-dQhPWs3gbj2jAWn1dE9BtB1JUr7tg01SZh4dSY/edit?usp=sharing
+
+Design Rationale A3\
+https://docs.google.com/document/d/1qWANzicwo-9TV27sUsyBWdhKD7FlOF7ls3s_n4g8bAU/edit?usp=sharing
+
+Handover Videos \
+https://docs.google.com/document/d/1ZaLYo35LfWfUgq571b2CYXC5q4cKZuNNrAtk3JrGeeU/edit?usp=sharing
