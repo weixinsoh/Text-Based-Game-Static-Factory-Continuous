@@ -9,7 +9,6 @@ import edu.monash.fit2099.engine.positions.Location;
 import game.actions.ConsumeAction;
 import game.actions.SellAction;
 import game.capabilities.Status;
-import game.scraps.Sellable;
 
 /**
  * Class that represents a Jar Of Pickles that can be consumed to randomly hurt or heal the player

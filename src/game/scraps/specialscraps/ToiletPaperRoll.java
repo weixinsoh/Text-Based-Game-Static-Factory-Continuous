@@ -7,7 +7,6 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actions.SellAction;
 import game.capabilities.Status;
-import game.scraps.Sellable;
 
 /**
  * Class representing toilet paper roll that can be purchased by the computer terminal.

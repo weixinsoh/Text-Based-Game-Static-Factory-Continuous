@@ -7,12 +7,13 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 import game.actions.SellAction;
 import game.capabilities.Status;
+import game.scraps.specialscraps.Sellable;
 
 /**
  * Class representing metal sheet.
  *
  */
-public class MetalSheet extends Item implements Sellable{
+public class MetalSheet extends Item implements Sellable {
 
     private static final double SELL_SPECIAL_CASE_CHANCE = 0.6;
 

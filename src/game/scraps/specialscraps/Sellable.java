@@ -1,4 +1,4 @@
-package game.scraps;
+package game.scraps.specialscraps;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.GameMap;
 
